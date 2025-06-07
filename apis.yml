@@ -575,6 +575,34 @@ common:
     name: Data Management in Cyclr | GDPR | Cyclr
     type: GDPR
     description: 'null'
+  - name: Features
+    type: Features
+    data:
+      - Number of integration flows
+      - Number of Users
+      - Managed Library, Utility & Quick Connectors included
+      - Additional Managed Library, Utility & Quick Connectors
+      - Additional 100,000 API Calls
+      - Geographic Location
+      - Max Concurrent Processes
+      - Max. Integration Poll Frequency
+      - Fully Managed Authentication
+      - Data on Demand/Proxy API
+      - Custom Connector Creation
+      - Advanced Connector Rate Limiting
+      - SSH/On-Prem Connectivity
+      - Embedded Marketplace UI
+      - Cyclr API Access for Custom UI
+      - Staging Environment
+      - Custom Domain
+      - Onboarding Fee
+      - Native Connector Build
+      - Training
+      - SA/Advisory Support
+      - In-App Support
+      - Account Manager
+      - SLA
+      - Annual Payment Discount
 created: '2025-06-06T00:00:00.000Z'
 modified: '2025-06-06'
 position: Consumer
