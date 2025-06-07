@@ -21,7 +21,7 @@ tags:
   - Integrations
   - Embedded SaaS Integration
   - Embedded iPaaS Integration
-type: Index
+type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
@@ -608,11 +608,14 @@ common:
     type: GitHubOrganization
 created: '2025-06-06T00:00:00.000Z'
 modified: '2025-06-06'
-position: Consumer
+position: Consuming
 description: >-
-  Delivering native integrations is commercially critical - but a task often
-  fraught with development headaches. Cyclr makes you more agile, standardizes
-  integrations and amplifies your eco-system. 
+  Cyclr is an embedded integration platform (embedded iPaaS) for SaaS
+  applications. Providing developers with an API connectivity solution that
+  assists with the creation, publishing and maintenance of integrations within
+  their own application. The product benefits from a modern low-code design
+  interface, multi-tenanted capabilities and a library of 400+ applications to
+  connect.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
