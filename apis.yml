@@ -603,6 +603,9 @@ common:
       - Account Manager
       - SLA
       - Annual Payment Discount
+  - name: GitHub Organization
+    url: https://github.com/cyclr
+    type: GitHubOrganization
 created: '2025-06-06T00:00:00.000Z'
 modified: '2025-06-06'
 position: Consumer
