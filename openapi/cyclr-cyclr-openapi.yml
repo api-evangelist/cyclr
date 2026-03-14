@@ -1,0 +1,1146 @@
+openapi: 3.1.0
+info:
+  title: Cyclr API
+  description: >-
+    Cyclr's REST API allows you to manage your Accounts and Cycles, as well as
+    install Templates and Connectors. The API is divided into two parts: Partner
+    Level and Account Level. You can use the same OAuth Access Token for both,
+    but Account level endpoints require an additional X-Cyclr-Account HTTP header
+    to identify which Cyclr Account to execute the call against.
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+  - url: https://api.cyclr.com/v1.0
+    description: Cyclr US API
+  - url: https://api.eu.cyclr.com/v1.0
+    description: Cyclr EU API
+  - url: https://api.au.cyclr.com/v1.0
+    description: Cyclr AU API
+security:
+  - bearerAuth: []
+tags:
+  - name: Authentication
+    description: Obtain access tokens for API authentication
+  - name: Accounts
+    description: Manage Cyclr accounts
+  - name: Connectors
+    description: Manage and install connectors
+  - name: Templates
+    description: Manage and install integration templates
+  - name: Cycles
+    description: Manage integration cycles
+  - name: Steps
+    description: Manage cycle steps, parameters, and field mappings
+  - name: LAUNCH
+    description: Deploy LAUNCH integration UI for end users
+  - name: Marketplace
+    description: Deploy Marketplace integration UI for end users
+  - name: Data On Demand
+    description: API-driven data requests (proxy)
+paths:
+  /oauth/token:
+    post:
+      operationId: getAccessToken
+      summary: Get Access Token
+      description: >-
+        Obtain an OAuth 2.0 access token using Client Credentials flow. Provide
+        your Cyclr Console Client ID and Client Secret to receive a Bearer
+        token for use with all other API endpoints.
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                    - client_credentials
+                  description: OAuth 2.0 grant type
+                client_id:
+                  type: string
+                  description: Your Cyclr Console Client ID
+                client_secret:
+                  type: string
+                  description: Your Cyclr Console Client Secret
+      responses:
+        '200':
+          description: Access token issued successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: The Bearer access token
+                  token_type:
+                    type: string
+                    description: Token type (Bearer)
+                  expires_in:
+                    type: integer
+                    description: Token expiry time in seconds
+        '400':
+          description: Invalid credentials or request
+  /accounts:
+    get:
+      operationId: listAccounts
+      summary: List Accounts
+      description: Retrieve a list of all Cyclr accounts under the partner.
+      tags:
+        - Accounts
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+          description: Number of results per page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createAccount
+      summary: Create Account
+      description: Create a new Cyclr account under the partner.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreate'
+      responses:
+        '200':
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /accounts/{accountId}:
+    get:
+      operationId: getAccount
+      summary: Get Account
+      description: Retrieve details of a specific Cyclr account.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+    put:
+      operationId: updateAccount
+      summary: Update Account
+      description: Update an existing Cyclr account.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreate'
+      responses:
+        '200':
+          description: Account updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+    delete:
+      operationId: deleteAccount
+      summary: Delete Account
+      description: Delete a specific Cyclr account.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      responses:
+        '200':
+          description: Account deleted successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+  /accounts/{accountId}/signintoken:
+    post:
+      operationId: getAccountSignInToken
+      summary: Get Account Sign-In Token
+      description: >-
+        Generate a sign-in token for a specific account, allowing access to the
+        Cyclr console for that account.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      responses:
+        '200':
+          description: Sign-in token generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Token:
+                    type: string
+                    description: The sign-in token
+                  ExpiresAtUtc:
+                    type: string
+                    format: date-time
+                    description: Token expiry time in UTC
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+  /connectors:
+    get:
+      operationId: listConnectors
+      summary: List Connectors
+      description: >-
+        Retrieve a list of available connectors. Use the query parameter to
+        filter by connector name.
+      tags:
+        - Connectors
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+          description: Filter connectors by name
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+          description: Number of results per page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connector'
+        '401':
+          description: Unauthorized
+  /connectors/{connectorId}:
+    get:
+      operationId: getConnector
+      summary: Get Connector
+      description: Retrieve details of a specific connector.
+      tags:
+        - Connectors
+      parameters:
+        - $ref: '#/components/parameters/connectorId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connector'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Connector not found
+  /connectors/{connectorId}/install:
+    post:
+      operationId: installConnector
+      summary: Install Connector
+      description: >-
+        Install a connector into the current account. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Connectors
+      parameters:
+        - $ref: '#/components/parameters/connectorId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                  description: Display name for the installed connector
+                Description:
+                  type: string
+                  description: Description for the installed connector
+                AuthValue:
+                  type: string
+                  description: Authentication value for the connector
+      responses:
+        '200':
+          description: Connector installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstalledConnector'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /account/connectors:
+    get:
+      operationId: listAccountConnectors
+      summary: List Account Connectors
+      description: >-
+        List all connectors installed in the current account. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Connectors
+      parameters:
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstalledConnector'
+        '401':
+          description: Unauthorized
+  /account/connectors/{installedConnectorId}:
+    get:
+      operationId: getAccountConnector
+      summary: Get Account Connector
+      description: >-
+        Get details of a specific installed connector in the account. Requires
+        the X-Cyclr-Account header.
+      tags:
+        - Connectors
+      parameters:
+        - name: installedConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the installed connector
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstalledConnector'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Installed connector not found
+    delete:
+      operationId: deleteAccountConnector
+      summary: Delete Account Connector
+      description: >-
+        Remove an installed connector from the account. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Connectors
+      parameters:
+        - name: installedConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the installed connector
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Connector removed successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Installed connector not found
+  /templates:
+    get:
+      operationId: listTemplates
+      summary: List Templates
+      description: Retrieve a list of available integration templates.
+      tags:
+        - Templates
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+          description: Number of results per page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template'
+        '401':
+          description: Unauthorized
+  /templates/{templateId}:
+    get:
+      operationId: getTemplate
+      summary: Get Template
+      description: Retrieve details of a specific integration template.
+      tags:
+        - Templates
+      parameters:
+        - $ref: '#/components/parameters/templateId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Template not found
+  /templates/{templateId}/install:
+    post:
+      operationId: installTemplate
+      summary: Install Template
+      description: >-
+        Install an integration template into the current account. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Templates
+      parameters:
+        - $ref: '#/components/parameters/templateId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                  description: Display name for the installed cycle
+                Description:
+                  type: string
+                  description: Description for the installed cycle
+      responses:
+        '200':
+          description: Template installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cycle'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Template not found
+  /cycles:
+    get:
+      operationId: listCycles
+      summary: List Cycles
+      description: >-
+        Retrieve a list of all cycles in the current account. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Cycles
+      parameters:
+        - $ref: '#/components/parameters/xCyclrAccount'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+          description: Number of results per page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cycle'
+        '401':
+          description: Unauthorized
+  /cycles/{cycleId}:
+    get:
+      operationId: getCycle
+      summary: Get Cycle
+      description: >-
+        Retrieve details of a specific cycle. Requires the X-Cyclr-Account
+        header.
+      tags:
+        - Cycles
+      parameters:
+        - $ref: '#/components/parameters/cycleId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cycle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Cycle not found
+    delete:
+      operationId: deleteCycle
+      summary: Delete Cycle
+      description: >-
+        Delete a specific cycle. Requires the X-Cyclr-Account header.
+      tags:
+        - Cycles
+      parameters:
+        - $ref: '#/components/parameters/cycleId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Cycle deleted successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Cycle not found
+  /cycles/{cycleId}/activate:
+    put:
+      operationId: activateCycle
+      summary: Activate Cycle
+      description: >-
+        Activate a cycle so it begins running. Requires the X-Cyclr-Account
+        header.
+      tags:
+        - Cycles
+      parameters:
+        - $ref: '#/components/parameters/cycleId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Cycle activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cycle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Cycle not found
+  /cycles/{cycleId}/deactivate:
+    put:
+      operationId: deactivateCycle
+      summary: Deactivate Cycle
+      description: >-
+        Deactivate a running cycle. Requires the X-Cyclr-Account header.
+      tags:
+        - Cycles
+      parameters:
+        - $ref: '#/components/parameters/cycleId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Cycle deactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cycle'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Cycle not found
+  /steps/{stepId}/parameters:
+    get:
+      operationId: getStepParameters
+      summary: Get Step Parameters
+      description: >-
+        Get the parameters for a specific step in a cycle. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Steps
+      parameters:
+        - $ref: '#/components/parameters/stepId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StepParameter'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+    put:
+      operationId: updateStepParameters
+      summary: Update Step Parameters
+      description: >-
+        Update the parameters for a specific step in a cycle. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Steps
+      parameters:
+        - $ref: '#/components/parameters/stepId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StepParameter'
+      responses:
+        '200':
+          description: Parameters updated successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+  /steps/{stepId}/fieldmappings:
+    get:
+      operationId: getStepFieldMappings
+      summary: Get Step Field Mappings
+      description: >-
+        Get the field mappings for a specific step in a cycle. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Steps
+      parameters:
+        - $ref: '#/components/parameters/stepId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldMapping'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+    put:
+      operationId: updateStepFieldMappings
+      summary: Update Step Field Mappings
+      description: >-
+        Update the field mappings for a specific step in a cycle. Requires the
+        X-Cyclr-Account header.
+      tags:
+        - Steps
+      parameters:
+        - $ref: '#/components/parameters/stepId'
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FieldMapping'
+      responses:
+        '200':
+          description: Field mappings updated successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+  /users/launch:
+    post:
+      operationId: deployLaunch
+      summary: Deploy LAUNCH
+      description: >-
+        Deploy the LAUNCH integration UI for a specific user, providing them
+        with an interactive interface to set up integrations.
+      tags:
+        - LAUNCH
+      parameters:
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - Username
+              properties:
+                Username:
+                  type: string
+                  description: The username of the user accessing LAUNCH
+                Password:
+                  type: string
+                  description: Optional password for the user
+                AccountName:
+                  type: string
+                  description: Display name for the account
+                ConnectorAuthentications:
+                  type: array
+                  description: Pre-configured connector authentications
+                  items:
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                      Version:
+                        type: string
+                      AuthValue:
+                        type: string
+                      Properties:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            Name:
+                              type: string
+                            Value:
+                              type: string
+      responses:
+        '200':
+          description: LAUNCH deployed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AccountId:
+                    type: string
+                    description: The Cyclr account ID
+                  ExpiresAtUtc:
+                    type: string
+                    format: date-time
+                    description: When the LAUNCH token expires
+                  LaunchUrl:
+                    type: string
+                    format: uri
+                    description: URL to redirect the user to for LAUNCH
+                  Token:
+                    type: string
+                    description: LAUNCH access token
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /users/marketplace:
+    post:
+      operationId: deployMarketplace
+      summary: Deploy Marketplace
+      description: >-
+        Deploy the Marketplace integration UI for a specific user, providing
+        them with an interface to browse and install available integrations.
+      tags:
+        - Marketplace
+      parameters:
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - Username
+                - MarketplaceId
+              properties:
+                Username:
+                  type: string
+                  description: The username of the user accessing the Marketplace
+                Password:
+                  type: string
+                  description: Optional password for the user
+                MarketplaceId:
+                  type: string
+                  description: The ID of the marketplace to deploy
+                AccountName:
+                  type: string
+                  description: Display name for the account
+      responses:
+        '200':
+          description: Marketplace deployed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AccountId:
+                    type: string
+                    description: The Cyclr account ID
+                  ExpiresAtUtc:
+                    type: string
+                    format: date-time
+                    description: When the Marketplace token expires
+                  MarketplaceUrl:
+                    type: string
+                    format: uri
+                    description: URL to redirect the user to for the Marketplace
+                  Token:
+                    type: string
+                    description: Marketplace access token
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /data:
+    post:
+      operationId: dataOnDemand
+      summary: Data On Demand
+      description: >-
+        Execute a data request through an installed connector, allowing you to
+        make API-driven data requests without working with cycles.
+      tags:
+        - Data On Demand
+      parameters:
+        - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ConnectorAccountId:
+                  type: string
+                  description: The ID of the installed connector
+                MethodId:
+                  type: string
+                  description: The ID of the connector method to call
+                Parameters:
+                  type: array
+                  description: Parameters for the method call
+                  items:
+                    type: object
+                    properties:
+                      TargetFieldName:
+                        type: string
+                      Value:
+                        type: string
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response data from the connector method
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using
+        Client Credentials flow with your Cyclr Console Client ID and Client
+        Secret.
+  parameters:
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the Cyclr account
+    connectorId:
+      name: connectorId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the connector
+    templateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the template
+    cycleId:
+      name: cycleId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the cycle
+    stepId:
+      name: stepId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the step
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: >-
+        The API ID of the Cyclr Account to execute the call against. Required
+        for all Account level endpoints.
+  schemas:
+    Account:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique account identifier
+        Name:
+          type: string
+          description: Account name
+        Description:
+          type: string
+          description: Account description
+        AudienceCount:
+          type: integer
+          description: Number of audiences in the account
+        CreatedDate:
+          type: string
+          format: date-time
+          description: When the account was created
+        Connectors:
+          type: array
+          description: Connectors installed in the account
+          items:
+            $ref: '#/components/schemas/InstalledConnector'
+    AccountCreate:
+      type: object
+      required:
+        - Name
+      properties:
+        Name:
+          type: string
+          description: Account name
+        Description:
+          type: string
+          description: Account description
+        ApiId:
+          type: string
+          description: External API identifier for the account
+    Connector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique connector identifier
+        Name:
+          type: string
+          description: Connector name
+        Description:
+          type: string
+          description: Connector description
+        Status:
+          type: string
+          description: Connector status
+        Version:
+          type: string
+          description: Connector version
+        Icon:
+          type: string
+          description: URL to the connector icon
+        AuthType:
+          type: string
+          description: Authentication type used by the connector
+          enum:
+            - OAuth2
+            - OAuth1
+            - ApiKey
+            - Basic
+            - None
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
+    Template:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique template identifier
+        Name:
+          type: string
+          description: Template name
+        Description:
+          type: string
+          description: Template description
+        Connectors:
+          type: array
+          description: Connectors used by the template
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+              Name:
+                type: string
+        Tags:
+          type: array
+          description: Tags associated with the template
+          items:
+            type: string
+    Cycle:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique cycle identifier
+        Name:
+          type: string
+          description: Cycle name
+        Description:
+          type: string
+          description: Cycle description
+        Status:
+          type: string
+          description: Current cycle status
+          enum:
+            - Active
+            - Inactive
+            - Paused
+            - Error
+        CreatedDate:
+          type: string
+          format: date-time
+          description: When the cycle was created
+        LastRunDate:
+          type: string
+          format: date-time
+          description: When the cycle last ran
+        Connectors:
+          type: array
+          description: Connectors used by the cycle
+          items:
+            $ref: '#/components/schemas/InstalledConnector'
+        Steps:
+          type: array
+          description: Steps in the cycle
+          items:
+            $ref: '#/components/schemas/Step'
+    Step:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique step identifier
+        Name:
+          type: string
+          description: Step name
+        Description:
+          type: string
+          description: Step description
+        ConnectorId:
+          type: integer
+          description: ID of the connector used by this step
+        MethodId:
+          type: string
+          description: ID of the method called by this step
+    StepParameter:
+      type: object
+      properties:
+        TargetFieldName:
+          type: string
+          description: Name of the target parameter field
+        Value:
+          type: string
+          description: Value of the parameter
+        TriggerValue:
+          type: string
+          description: Trigger value for the parameter
+    FieldMapping:
+      type: object
+      properties:
+        SourceFieldName:
+          type: string
+          description: Source field name for the mapping
+        TargetFieldName:
+          type: string
+          description: Target field name for the mapping
+        Value:
+          type: string
+          description: Static value for the mapping
+        TriggerValue:
+          type: string
+          description: Trigger value for the mapping

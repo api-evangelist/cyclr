@@ -9,13 +9,18 @@ apis:
       - Embedded SaaS Integration
       - Embedded iPaaS Integration
     humanURL: ' https://cyclr.com/'
+    baseURL: https://api.cyclr.com/v1.0
     properties:
       - url: ' https://cyclr.com/'
         type: Documentation
+      - url: https://docs.cyclr.com/api/
+        type: Documentation
+      - url: openapi/cyclr-cyclr-openapi.yml
+        type: OpenAPI
     description: >-
       Delivering native integrations is commercially critical - but a task often
       fraught with development headaches. Cyclr makes you more agile,
-      standardizes integrations and amplifies your eco-system. 
+      standardizes integrations and amplifies your eco-system.
 name: Cyclr
 tags:
   - Integrations
@@ -616,7 +621,7 @@ common:
     name: Use Cases
     type: UseCases
 created: '2025-06-06T00:00:00.000Z'
-modified: '2026-01-02'
+modified: '2026-03-14'
 position: Consumer
 description: >-
   Delivering native integrations is commercially critical - but a task often
