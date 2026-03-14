@@ -1,0 +1,74 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "cyclr": "https://cyclr.com/ns/",
+    "Account": {
+      "@id": "cyclr:Account",
+      "@context": {
+        "Id": "cyclr:accountId",
+        "Name": "schema:name",
+        "Description": "schema:description",
+        "ApiId": "cyclr:apiId",
+        "AudienceCount": "cyclr:audienceCount",
+        "CreatedDate": "schema:dateCreated",
+        "Connectors": "cyclr:hasInstalledConnector"
+      }
+    },
+    "Connector": {
+      "@id": "cyclr:Connector",
+      "@context": {
+        "Id": "cyclr:connectorId",
+        "Name": "schema:name",
+        "Description": "schema:description",
+        "Status": "cyclr:status",
+        "Version": "schema:version",
+        "Icon": "schema:image",
+        "AuthType": "cyclr:authenticationType"
+      }
+    },
+    "InstalledConnector": {
+      "@id": "cyclr:InstalledConnector",
+      "@context": {
+        "Id": "cyclr:installedConnectorId",
+        "Name": "schema:name",
+        "Description": "schema:description",
+        "ConnectorId": "cyclr:connectorId",
+        "Authenticated": "cyclr:isAuthenticated",
+        "Status": "cyclr:status"
+      }
+    },
+    "Template": {
+      "@id": "cyclr:Template",
+      "@context": {
+        "Id": "cyclr:templateId",
+        "Name": "schema:name",
+        "Description": "schema:description",
+        "Connectors": "cyclr:usesConnector",
+        "Tags": "schema:keywords"
+      }
+    },
+    "Cycle": {
+      "@id": "cyclr:Cycle",
+      "@context": {
+        "Id": "cyclr:cycleId",
+        "Name": "schema:name",
+        "Description": "schema:description",
+        "Status": "cyclr:status",
+        "CreatedDate": "schema:dateCreated",
+        "LastRunDate": "cyclr:lastRunDate",
+        "Connectors": "cyclr:usesInstalledConnector",
+        "Steps": "cyclr:hasStep"
+      }
+    },
+    "Step": {
+      "@id": "cyclr:Step",
+      "@context": {
+        "Id": "cyclr:stepId",
+        "Name": "schema:name",
+        "Description": "schema:description",
+        "ConnectorId": "cyclr:connectorId",
+        "MethodId": "cyclr:methodId"
+      }
+    }
+  }
+}

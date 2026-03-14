@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/json-schema/cyclr-connector.json",
+  "title": "Cyclr Connector",
+  "description": "A Cyclr connector represents a pre-built integration with a third-party application or service. Connectors define the available methods, authentication, and data mappings for interacting with external APIs.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique connector identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Connector name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Connector description"
+    },
+    "Status": {
+      "type": "string",
+      "description": "Connector status"
+    },
+    "Version": {
+      "type": "string",
+      "description": "Connector version"
+    },
+    "Icon": {
+      "type": "string",
+      "description": "URL to the connector icon"
+    },
+    "AuthType": {
+      "type": "string",
+      "description": "Authentication type used by the connector",
+      "enum": ["OAuth2", "OAuth1", "ApiKey", "Basic", "None"]
+    }
+  },
+  "required": ["Id", "Name"]
+}

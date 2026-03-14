@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/json-schema/cyclr-account.json",
+  "title": "Cyclr Account",
+  "description": "A Cyclr account represents a tenant or customer environment within the Cyclr iPaaS platform. Each account contains its own installed connectors, cycles, and configuration.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Unique account identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Account name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Account description"
+    },
+    "ApiId": {
+      "type": "string",
+      "description": "External API identifier for the account"
+    },
+    "AudienceCount": {
+      "type": "integer",
+      "description": "Number of audiences in the account"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the account was created"
+    },
+    "Connectors": {
+      "type": "array",
+      "description": "Connectors installed in the account",
+      "items": {
+        "$ref": "cyclr-installed-connector.json"
+      }
+    }
+  },
+  "required": ["Id", "Name"]
+}

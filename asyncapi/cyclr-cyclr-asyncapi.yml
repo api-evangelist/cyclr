@@ -1,0 +1,263 @@
+asyncapi: 2.6.0
+info:
+  title: Cyclr Webhook Events
+  version: 1.0.0
+  description: >-
+    AsyncAPI specification for Cyclr webhook events. Cyclr is an embedded
+    iPaaS/integration platform that emits webhook notifications when key
+    events occur within accounts, cycles, connectors, and templates. These
+    events enable real-time monitoring of integration lifecycle changes.
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+  us:
+    url: https://api.cyclr.com
+    protocol: https
+    description: Cyclr US webhook delivery endpoint
+  eu:
+    url: https://api.eu.cyclr.com
+    protocol: https
+    description: Cyclr EU webhook delivery endpoint
+  au:
+    url: https://api.au.cyclr.com
+    protocol: https
+    description: Cyclr AU webhook delivery endpoint
+channels:
+  cycle.activated:
+    description: Triggered when a cycle is activated and begins running.
+    subscribe:
+      operationId: onCycleActivated
+      summary: Cycle Activated
+      message:
+        $ref: '#/components/messages/CycleStatusChanged'
+  cycle.deactivated:
+    description: Triggered when a running cycle is deactivated.
+    subscribe:
+      operationId: onCycleDeactivated
+      summary: Cycle Deactivated
+      message:
+        $ref: '#/components/messages/CycleStatusChanged'
+  cycle.error:
+    description: Triggered when a cycle encounters an error during execution.
+    subscribe:
+      operationId: onCycleError
+      summary: Cycle Error
+      message:
+        $ref: '#/components/messages/CycleError'
+  cycle.completed:
+    description: Triggered when a cycle run completes successfully.
+    subscribe:
+      operationId: onCycleCompleted
+      summary: Cycle Completed
+      message:
+        $ref: '#/components/messages/CycleStatusChanged'
+  connector.installed:
+    description: Triggered when a connector is installed in an account.
+    subscribe:
+      operationId: onConnectorInstalled
+      summary: Connector Installed
+      message:
+        $ref: '#/components/messages/ConnectorEvent'
+  connector.uninstalled:
+    description: Triggered when a connector is removed from an account.
+    subscribe:
+      operationId: onConnectorUninstalled
+      summary: Connector Uninstalled
+      message:
+        $ref: '#/components/messages/ConnectorEvent'
+  connector.authenticated:
+    description: Triggered when a connector authentication is completed.
+    subscribe:
+      operationId: onConnectorAuthenticated
+      summary: Connector Authenticated
+      message:
+        $ref: '#/components/messages/ConnectorEvent'
+  account.created:
+    description: Triggered when a new account is created under the partner.
+    subscribe:
+      operationId: onAccountCreated
+      summary: Account Created
+      message:
+        $ref: '#/components/messages/AccountEvent'
+  account.deleted:
+    description: Triggered when an account is deleted.
+    subscribe:
+      operationId: onAccountDeleted
+      summary: Account Deleted
+      message:
+        $ref: '#/components/messages/AccountEvent'
+  template.installed:
+    description: Triggered when a template is installed into an account.
+    subscribe:
+      operationId: onTemplateInstalled
+      summary: Template Installed
+      message:
+        $ref: '#/components/messages/TemplateEvent'
+  step.error:
+    description: Triggered when an individual step within a cycle encounters an error.
+    subscribe:
+      operationId: onStepError
+      summary: Step Error
+      message:
+        $ref: '#/components/messages/StepError'
+components:
+  messages:
+    CycleStatusChanged:
+      payload:
+        type: object
+        properties:
+          EventType:
+            type: string
+            description: The type of event that occurred
+          Timestamp:
+            type: string
+            format: date-time
+            description: When the event occurred in UTC
+          AccountId:
+            type: string
+            description: The account ID where the event occurred
+          CycleId:
+            type: string
+            description: The unique identifier of the cycle
+          CycleName:
+            type: string
+            description: The name of the cycle
+          Status:
+            type: string
+            enum:
+              - Active
+              - Inactive
+              - Paused
+              - Error
+            description: The new status of the cycle
+    CycleError:
+      payload:
+        type: object
+        properties:
+          EventType:
+            type: string
+            description: The type of event that occurred
+          Timestamp:
+            type: string
+            format: date-time
+            description: When the event occurred in UTC
+          AccountId:
+            type: string
+            description: The account ID where the event occurred
+          CycleId:
+            type: string
+            description: The unique identifier of the cycle
+          CycleName:
+            type: string
+            description: The name of the cycle
+          StepId:
+            type: string
+            description: The step where the error occurred
+          ErrorMessage:
+            type: string
+            description: Description of the error
+          ErrorCode:
+            type: string
+            description: Machine-readable error code
+    ConnectorEvent:
+      payload:
+        type: object
+        properties:
+          EventType:
+            type: string
+            description: The type of event that occurred
+          Timestamp:
+            type: string
+            format: date-time
+            description: When the event occurred in UTC
+          AccountId:
+            type: string
+            description: The account ID where the event occurred
+          ConnectorId:
+            type: integer
+            description: The base connector identifier
+          InstalledConnectorId:
+            type: integer
+            description: The installed connector identifier
+          ConnectorName:
+            type: string
+            description: The name of the connector
+          Authenticated:
+            type: boolean
+            description: Whether the connector is authenticated
+    AccountEvent:
+      payload:
+        type: object
+        properties:
+          EventType:
+            type: string
+            description: The type of event that occurred
+          Timestamp:
+            type: string
+            format: date-time
+            description: When the event occurred in UTC
+          AccountId:
+            type: string
+            description: The unique identifier of the account
+          AccountName:
+            type: string
+            description: The name of the account
+    TemplateEvent:
+      payload:
+        type: object
+        properties:
+          EventType:
+            type: string
+            description: The type of event that occurred
+          Timestamp:
+            type: string
+            format: date-time
+            description: When the event occurred in UTC
+          AccountId:
+            type: string
+            description: The account ID where the template was installed
+          TemplateId:
+            type: string
+            description: The unique identifier of the template
+          TemplateName:
+            type: string
+            description: The name of the template
+          CycleId:
+            type: string
+            description: The cycle ID created from the template installation
+    StepError:
+      payload:
+        type: object
+        properties:
+          EventType:
+            type: string
+            description: The type of event that occurred
+          Timestamp:
+            type: string
+            format: date-time
+            description: When the event occurred in UTC
+          AccountId:
+            type: string
+            description: The account ID where the event occurred
+          CycleId:
+            type: string
+            description: The cycle containing the step
+          StepId:
+            type: string
+            description: The unique identifier of the step
+          StepName:
+            type: string
+            description: The name of the step
+          ConnectorId:
+            type: integer
+            description: The connector used by the step
+          ErrorMessage:
+            type: string
+            description: Description of the error
+          ErrorCode:
+            type: string
+            description: Machine-readable error code

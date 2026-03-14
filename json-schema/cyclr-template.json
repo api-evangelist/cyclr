@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/json-schema/cyclr-template.json",
+  "title": "Cyclr Template",
+  "description": "A Cyclr template is a reusable integration blueprint that defines a pre-configured workflow of steps and connector mappings. Templates can be installed into accounts to create active integration cycles.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Unique template identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Template description"
+    },
+    "Connectors": {
+      "type": "array",
+      "description": "Connectors used by the template",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "Connector identifier"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Connector name"
+          }
+        }
+      }
+    },
+    "Tags": {
+      "type": "array",
+      "description": "Tags associated with the template",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["Id", "Name"]
+}

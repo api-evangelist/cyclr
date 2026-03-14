@@ -17,6 +17,22 @@ apis:
         type: Documentation
       - url: openapi/cyclr-cyclr-openapi.yml
         type: OpenAPI
+      - url: asyncapi/cyclr-cyclr-asyncapi.yml
+        type: AsyncAPI
+      - url: json-schema/cyclr-account.json
+        type: JSONSchema
+      - url: json-schema/cyclr-connector.json
+        type: JSONSchema
+      - url: json-schema/cyclr-installed-connector.json
+        type: JSONSchema
+      - url: json-schema/cyclr-template.json
+        type: JSONSchema
+      - url: json-schema/cyclr-cycle.json
+        type: JSONSchema
+      - url: json-schema/cyclr-step.json
+        type: JSONSchema
+      - url: json-ld/cyclr-context.jsonld
+        type: JSONLD
     description: >-
       Delivering native integrations is commercially critical - but a task often
       fraught with development headaches. Cyclr makes you more agile,

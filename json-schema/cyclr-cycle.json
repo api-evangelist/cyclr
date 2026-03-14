@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/json-schema/cyclr-cycle.json",
+  "title": "Cyclr Cycle",
+  "description": "A Cyclr cycle is an active integration workflow running within an account. Cycles are typically created by installing templates and consist of a series of steps that move data between connected applications.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Unique cycle identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Cycle name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Cycle description"
+    },
+    "Status": {
+      "type": "string",
+      "description": "Current cycle status",
+      "enum": ["Active", "Inactive", "Paused", "Error"]
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the cycle was created"
+    },
+    "LastRunDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the cycle last ran"
+    },
+    "Connectors": {
+      "type": "array",
+      "description": "Connectors used by the cycle",
+      "items": {
+        "$ref": "cyclr-installed-connector.json"
+      }
+    },
+    "Steps": {
+      "type": "array",
+      "description": "Steps in the cycle",
+      "items": {
+        "$ref": "cyclr-step.json"
+      }
+    }
+  },
+  "required": ["Id", "Name"]
+}

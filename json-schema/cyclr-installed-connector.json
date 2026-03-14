@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/json-schema/cyclr-installed-connector.json",
+  "title": "Cyclr Installed Connector",
+  "description": "An installed connector is an instance of a Cyclr connector that has been deployed into a specific account. It holds account-level authentication credentials and configuration for the connector.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Installed connector identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Installed connector name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Installed connector description"
+    },
+    "ConnectorId": {
+      "type": "integer",
+      "description": "Reference to the base connector"
+    },
+    "Authenticated": {
+      "type": "boolean",
+      "description": "Whether the connector has been authenticated"
+    },
+    "Status": {
+      "type": "string",
+      "description": "Installation status"
+    }
+  },
+  "required": ["Id", "ConnectorId"]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/json-schema/cyclr-step.json",
+  "title": "Cyclr Step",
+  "description": "A Cyclr step represents an individual action within a cycle. Each step calls a specific method on a connector and can include parameters and field mappings to transform data between steps.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Unique step identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Step name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Step description"
+    },
+    "ConnectorId": {
+      "type": "integer",
+      "description": "ID of the connector used by this step"
+    },
+    "MethodId": {
+      "type": "string",
+      "description": "ID of the method called by this step"
+    }
+  },
+  "required": ["Id", "Name"]
+}
