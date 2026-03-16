@@ -637,7 +637,7 @@ common:
     name: Use Cases
     type: UseCases
 created: '2025-06-06T00:00:00.000Z'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   Delivering native integrations is commercially critical - but a task often
@@ -645,5 +645,5 @@ description: >-
   integrations and amplifies your eco-system. 
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
