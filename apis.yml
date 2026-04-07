@@ -5,9 +5,9 @@ apis:
   - aid: cyclr:cyclr
     name: Cyclr
     tags:
-      - Integrations
-      - Embedded SaaS Integration
       - Embedded iPaaS Integration
+      - Embedded SaaS Integration
+      - Integrations
     humanURL: ' https://cyclr.com/'
     baseURL: https://api.cyclr.com/v1.0
     properties:
@@ -39,9 +39,9 @@ apis:
       standardizes integrations and amplifies your eco-system.
 name: Cyclr
 tags:
-  - Integrations
-  - Embedded SaaS
   - Embedded iPaaS
+  - Embedded SaaS
+  - Integrations
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
