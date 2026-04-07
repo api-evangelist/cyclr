@@ -46,7 +46,7 @@ paths:
   /oauth/token:
     post:
       operationId: getAccessToken
-      summary: Get Access Token
+      summary: Cyclr Get Access Token
       description: >-
         Obtain an OAuth 2.0 access token using Client Credentials flow. Provide
         your Cyclr Console Client ID and Client Secret to receive a Bearer
@@ -98,7 +98,7 @@ paths:
   /accounts:
     get:
       operationId: listAccounts
-      summary: List Accounts
+      summary: Cyclr List Accounts
       description: Retrieve a list of all Cyclr accounts under the partner.
       tags:
         - Accounts
@@ -126,7 +126,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createAccount
-      summary: Create Account
+      summary: Cyclr Create Account
       description: Create a new Cyclr account under the partner.
       tags:
         - Accounts
@@ -150,7 +150,7 @@ paths:
   /accounts/{accountId}:
     get:
       operationId: getAccount
-      summary: Get Account
+      summary: Cyclr Get Account
       description: Retrieve details of a specific Cyclr account.
       tags:
         - Accounts
@@ -169,7 +169,7 @@ paths:
           description: Account not found
     put:
       operationId: updateAccount
-      summary: Update Account
+      summary: Cyclr Update Account
       description: Update an existing Cyclr account.
       tags:
         - Accounts
@@ -194,7 +194,7 @@ paths:
           description: Account not found
     delete:
       operationId: deleteAccount
-      summary: Delete Account
+      summary: Cyclr Delete Account
       description: Delete a specific Cyclr account.
       tags:
         - Accounts
@@ -210,7 +210,7 @@ paths:
   /accounts/{accountId}/signintoken:
     post:
       operationId: getAccountSignInToken
-      summary: Get Account Sign-In Token
+      summary: Cyclr Get Account Sign-In Token
       description: >-
         Generate a sign-in token for a specific account, allowing access to the
         Cyclr console for that account.
@@ -240,7 +240,7 @@ paths:
   /connectors:
     get:
       operationId: listConnectors
-      summary: List Connectors
+      summary: Cyclr List Connectors
       description: >-
         Retrieve a list of available connectors. Use the query parameter to
         filter by connector name.
@@ -276,7 +276,7 @@ paths:
   /connectors/{connectorId}:
     get:
       operationId: getConnector
-      summary: Get Connector
+      summary: Cyclr Get Connector
       description: Retrieve details of a specific connector.
       tags:
         - Connectors
@@ -296,7 +296,7 @@ paths:
   /connectors/{connectorId}/install:
     post:
       operationId: installConnector
-      summary: Install Connector
+      summary: Cyclr Install Connector
       description: >-
         Install a connector into the current account. Requires the
         X-Cyclr-Account header.
@@ -334,7 +334,7 @@ paths:
   /account/connectors:
     get:
       operationId: listAccountConnectors
-      summary: List Account Connectors
+      summary: Cyclr List Account Connectors
       description: >-
         List all connectors installed in the current account. Requires the
         X-Cyclr-Account header.
@@ -356,7 +356,7 @@ paths:
   /account/connectors/{installedConnectorId}:
     get:
       operationId: getAccountConnector
-      summary: Get Account Connector
+      summary: Cyclr Get Account Connector
       description: >-
         Get details of a specific installed connector in the account. Requires
         the X-Cyclr-Account header.
@@ -383,7 +383,7 @@ paths:
           description: Installed connector not found
     delete:
       operationId: deleteAccountConnector
-      summary: Delete Account Connector
+      summary: Cyclr Delete Account Connector
       description: >-
         Remove an installed connector from the account. Requires the
         X-Cyclr-Account header.
@@ -407,7 +407,7 @@ paths:
   /templates:
     get:
       operationId: listTemplates
-      summary: List Templates
+      summary: Cyclr List Templates
       description: Retrieve a list of available integration templates.
       tags:
         - Templates
@@ -436,7 +436,7 @@ paths:
   /templates/{templateId}:
     get:
       operationId: getTemplate
-      summary: Get Template
+      summary: Cyclr Get Template
       description: Retrieve details of a specific integration template.
       tags:
         - Templates
@@ -456,7 +456,7 @@ paths:
   /templates/{templateId}/install:
     post:
       operationId: installTemplate
-      summary: Install Template
+      summary: Cyclr Install Template
       description: >-
         Install an integration template into the current account. Requires the
         X-Cyclr-Account header.
@@ -493,7 +493,7 @@ paths:
   /cycles:
     get:
       operationId: listCycles
-      summary: List Cycles
+      summary: Cyclr List Cycles
       description: >-
         Retrieve a list of all cycles in the current account. Requires the
         X-Cyclr-Account header.
@@ -525,7 +525,7 @@ paths:
   /cycles/{cycleId}:
     get:
       operationId: getCycle
-      summary: Get Cycle
+      summary: Cyclr Get Cycle
       description: >-
         Retrieve details of a specific cycle. Requires the X-Cyclr-Account
         header.
@@ -547,7 +547,7 @@ paths:
           description: Cycle not found
     delete:
       operationId: deleteCycle
-      summary: Delete Cycle
+      summary: Cyclr Delete Cycle
       description: >-
         Delete a specific cycle. Requires the X-Cyclr-Account header.
       tags:
@@ -565,7 +565,7 @@ paths:
   /cycles/{cycleId}/activate:
     put:
       operationId: activateCycle
-      summary: Activate Cycle
+      summary: Cyclr Activate Cycle
       description: >-
         Activate a cycle so it begins running. Requires the X-Cyclr-Account
         header.
@@ -588,7 +588,7 @@ paths:
   /cycles/{cycleId}/deactivate:
     put:
       operationId: deactivateCycle
-      summary: Deactivate Cycle
+      summary: Cyclr Deactivate Cycle
       description: >-
         Deactivate a running cycle. Requires the X-Cyclr-Account header.
       tags:
@@ -610,7 +610,7 @@ paths:
   /steps/{stepId}/parameters:
     get:
       operationId: getStepParameters
-      summary: Get Step Parameters
+      summary: Cyclr Get Step Parameters
       description: >-
         Get the parameters for a specific step in a cycle. Requires the
         X-Cyclr-Account header.
@@ -634,7 +634,7 @@ paths:
           description: Step not found
     put:
       operationId: updateStepParameters
-      summary: Update Step Parameters
+      summary: Cyclr Update Step Parameters
       description: >-
         Update the parameters for a specific step in a cycle. Requires the
         X-Cyclr-Account header.
@@ -661,7 +661,7 @@ paths:
   /steps/{stepId}/fieldmappings:
     get:
       operationId: getStepFieldMappings
-      summary: Get Step Field Mappings
+      summary: Cyclr Get Step Field Mappings
       description: >-
         Get the field mappings for a specific step in a cycle. Requires the
         X-Cyclr-Account header.
@@ -685,7 +685,7 @@ paths:
           description: Step not found
     put:
       operationId: updateStepFieldMappings
-      summary: Update Step Field Mappings
+      summary: Cyclr Update Step Field Mappings
       description: >-
         Update the field mappings for a specific step in a cycle. Requires the
         X-Cyclr-Account header.
@@ -712,7 +712,7 @@ paths:
   /users/launch:
     post:
       operationId: deployLaunch
-      summary: Deploy LAUNCH
+      summary: Cyclr Deploy LAUNCH
       description: >-
         Deploy the LAUNCH integration UI for a specific user, providing them
         with an interactive interface to set up integrations.
@@ -788,7 +788,7 @@ paths:
   /users/marketplace:
     post:
       operationId: deployMarketplace
-      summary: Deploy Marketplace
+      summary: Cyclr Deploy Marketplace
       description: >-
         Deploy the Marketplace integration UI for a specific user, providing
         them with an interface to browse and install available integrations.
@@ -847,7 +847,7 @@ paths:
   /data:
     post:
       operationId: dataOnDemand
-      summary: Data On Demand
+      summary: Cyclr Data On Demand
       description: >-
         Execute a data request through an installed connector, allowing you to
         make API-driven data requests without working with cycles.
