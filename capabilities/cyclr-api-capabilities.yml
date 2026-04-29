@@ -1,0 +1,69 @@
+name: Cyclr API Capabilities
+description: >-
+  Capability profile for the Cyclr embedded iPaaS REST API derived from
+  the published OpenAPI specification. Each capability maps to one or
+  more endpoints exposed at api.cyclr.com (and regional EU / AU / US2 /
+  UK siblings) and reflects functions available to Partner-level and
+  Account-level integrations.
+modified: '2026-04-28'
+api: cyclr-api
+capabilities:
+  - id: oauth-token
+    name: Obtain Access Token
+    description: Exchange Client ID and Client Secret for an OAuth 2.0 bearer token.
+    operations:
+      - POST /oauth/token
+  - id: manage-accounts
+    name: Manage Accounts
+    description: Create, retrieve, update, and authorize Cyclr accounts (Partner level).
+    operations:
+      - GET /accounts
+      - POST /accounts
+      - GET /accounts/{id}
+      - PUT /accounts/{id}
+      - DELETE /accounts/{id}
+  - id: manage-connectors
+    name: Manage Connectors
+    description: List the connector library and install connectors into accounts.
+    operations:
+      - GET /connectors
+      - POST /accounts/connectors
+      - GET /accounts/connectors
+  - id: manage-templates
+    name: Manage Templates
+    description: List integration templates and install them into accounts as cycles.
+    operations:
+      - GET /templates
+      - POST /accounts/templates/install
+  - id: manage-cycles
+    name: Manage Cycles
+    description: Create, configure, activate, and deactivate integration cycles in an account.
+    operations:
+      - GET /cycles
+      - POST /cycles
+      - GET /cycles/{id}
+      - PUT /cycles/{id}
+      - DELETE /cycles/{id}
+  - id: manage-steps
+    name: Manage Cycle Steps
+    description: Configure individual cycle steps, parameters, and field mappings.
+    operations:
+      - GET /cycles/{cycleId}/steps
+      - POST /cycles/{cycleId}/steps
+      - PUT /cycles/{cycleId}/steps/{stepId}
+      - DELETE /cycles/{cycleId}/steps/{stepId}
+  - id: data-on-demand
+    name: Data on Demand
+    description: Proxy connector method calls and retrieve account connectors for runtime data access.
+    operations:
+      - POST /data-on-demand/{connectorMethod}
+  - id: launch-ui
+    name: Deploy LAUNCH UI
+    description: Generate authenticated tokens for embedding the Cyclr LAUNCH integration UI in your product.
+    operations:
+      - POST /launch/token
+  - id: marketplace-ui
+    name: Deploy Marketplace UI
+    description: Generate authenticated tokens for embedding the Cyclr Marketplace UI in your product.
+    operations:
+      - POST /marketplace/token

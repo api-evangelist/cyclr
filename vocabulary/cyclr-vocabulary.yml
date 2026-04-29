@@ -1,0 +1,57 @@
+name: Cyclr Vocabulary
+description: >-
+  Controlled vocabulary describing the core concepts of the Cyclr
+  embedded iPaaS: accounts, connectors, templates, cycles, steps,
+  authentication, and the LAUNCH and Marketplace embedded UIs.
+modified: '2026-04-28'
+terms:
+  - term: Account
+    description: A Cyclr customer account inside a Partner's tenant; owns its own connectors and cycles.
+    properties:
+      - id
+      - name
+      - subDomain
+      - companyName
+      - status
+  - term: Connector
+    description: A pre-built integration with a third-party SaaS application (Salesforce, HubSpot, Stripe, etc.).
+    properties:
+      - id
+      - name
+      - description
+      - methods
+  - term: InstalledConnector
+    description: A connector that has been installed and authenticated into a specific Cyclr account.
+    properties:
+      - id
+      - connectorId
+      - accountId
+      - authStatus
+  - term: Template
+    description: A reusable workflow definition that can be installed as a Cycle in an Account.
+    properties:
+      - id
+      - name
+      - description
+      - connectors
+  - term: Cycle
+    description: A running integration workflow inside an Account, composed of Steps.
+    properties:
+      - id
+      - name
+      - status
+      - templateId
+      - accountId
+      - steps
+  - term: Step
+    description: A single node in a Cycle that calls a Connector method, transforms data, or branches logic.
+    properties:
+      - id
+      - cycleId
+      - connectorMethod
+      - parameters
+      - mappings
+  - term: LaunchUI
+    description: An embedded integration UI that lets end-users browse, install, and configure templates inside the host SaaS product.
+  - term: MarketplaceUI
+    description: An embedded marketplace UI rendering the connector library and pre-built templates for end-users.

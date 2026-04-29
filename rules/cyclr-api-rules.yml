@@ -1,0 +1,46 @@
+extends: spectral:oas
+rules:
+  cyclr-info-contact:
+    description: Cyclr API spec must declare a contact.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  cyclr-server-https:
+    description: Cyclr server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+  cyclr-tags-required:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+  cyclr-operation-id-required:
+    description: Every operation must declare an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  cyclr-bearer-auth:
+    description: Cyclr uses bearer-token authentication.
+    severity: warn
+    given: $.components.securitySchemes
+    then:
+      field: bearerAuth
+      function: truthy
+  cyclr-versioned-base-url:
+    description: Cyclr base URL must include a version segment (/v1.0).
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '/v[0-9]+(\.[0-9]+)?'
