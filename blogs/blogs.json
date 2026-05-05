@@ -1,0 +1,13 @@
+{
+  "repo": "cyclr",
+  "feeds": [
+    {
+      "source": "https://cyclr.com/blog",
+      "feed_url": "https://cyclr.com/blog/feed",
+      "saved": 10,
+      "title": "The Cyclr Blog | Exploring SaaS Integration, iPaaS, APIs, AI & More"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:26:47Z"
+}
