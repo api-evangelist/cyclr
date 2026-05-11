@@ -124,6 +124,109 @@ common:
     url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
+  - type: Integrations
+    url: https://cyclr.com/connectors
+integrations:
+  - name: Connector Creation Toolkit
+  - name: Salesforce
+  - name: Hubspot
+  - name: Microsoft Dynamics
+  - name: Oracle Netsuite
+  - name: Shopify
+  - name: Amazon S3
+  - name: Database Connectors
+  - name: Universal Connectors
+  - name: 3D Cart
+  - name: Access CRM
+  - name: Act!
+  - name: Actionstep
+  - name: ActiveCampaign
+  - name: Adobe Campaign
+  - name: Adobe PDF Extract API
+  - name: Adobe Sign
+  - name: ADP
+  - name: AdPage
+  - name: Aesthetic Record
+  - name: Aircall
+  - name: Airship
+  - name: Airtable
+  - name: Akeneo
+  - name: AlertMedia
+  - name: Alto
+  - name: Amadeus
+  - name: Amazon Connect
+  - name: Amazon EC2
+  - name: Amazon Selling Partner
+  - name: AmeriCommerce
+  - name: Answerbase
+  - name: Any Other Application
+  - name: Apollo.io
+  - name: Apple iCloud Contacts
+  - name: Asana
+  - name: Authorize.net
+  - name: AutoReach
+  - name: Autotask
+  - name: AWS Backup
+  - name: Azure AI Document Intelligence
+  - name: BambooHR
+  - name: Basecamp
+  - name: BatchDialer
+  - name: Benchmark Email
+  - name: BHN Rewards
+  - name: BigChange
+  - name: BigCommerce
+  - name: Bird
+  - name: Bitrix24
+  - name: Bloomreach
+  - name: Bluecore
+  - name: BNTouch Mortgage CRM
+  - name: bob HR
+  - name: Bookafy
+  - name: Bookeo
+  - name: Booker
+  - name: Box
+  - name: Brandbot
+  - name: Breathe HR
+  - name: Brevo
+  - name: Brightspace
+  - name: Briostack
+  - name: BriteVerify
+  - name: Bronto
+  - name: Bullhorn
+  - name: Businessmap
+  - name: Calendly
+  - name: CallRail
+  - name: CampusIvy
+  - name: Cap HPI
+  - name: Capitus
+  - name: Capsule
+  - name: Cardpointe
+  - name: Caspio
+  - name: Cendyn
+  - name: Chargebee
+  - name: Chargify
+  - name: ChatGPT
+  - name: Cheetah
+  - name: Childcare CRM
+  - name: Claude
+  - name: ClickSend SMS
+  - name: Cloud4Wi
+  - name: Clover
+  - name: Club OS
+  - name: Club Ready
+  - name: Clubspeed
+  - name: Cognism
+  - name: CoinGecko
+  - name: ConnectWise Manage
+  - name: ConnectWise PSA
+  - name: Constant Contact
+  - name: Contact Form 7 Plugin
+  - name: Converge
+  - name: Copper
+  - name: Counterpoint
+  - name: Creatio
+  - name: Creditsafe
+  - name: Crunch
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
