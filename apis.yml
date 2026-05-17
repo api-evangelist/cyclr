@@ -1,6 +1,6 @@
 aid: cyclr
 name: Cyclr
-x-type: company
+kind: company
 description: >-
   Cyclr is an embedded iPaaS (integration platform as a service) used
   by SaaS vendors to deliver native integrations to their customers
