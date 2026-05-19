@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cyclr API — Authentication
+  description: 'Cyclr API — Authentication. 1 operations. Lead operation: Cyclr Get Access Token. Self-contained Naftiko capability
+    covering one Cyclr business surface.'
+  tags:
+  - Cyclr
+  - Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CYCLR_API_KEY: CYCLR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cyclr-authentication
+    baseUri: https://api.cyclr.com/v1.0
+    description: Cyclr API — Authentication business capability. Self-contained, no shared references.
+    resources:
+    - name: oauth-token
+      path: /oauth/token
+      operations:
+      - name: getaccesstoken
+        method: POST
+        description: Cyclr Get Access Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CYCLR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cyclr-authentication-rest
+    port: 8080
+    description: REST adapter for Cyclr API — Authentication. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/oauth/token
+      name: oauth-token
+      description: REST surface for oauth-token.
+      operations:
+      - method: POST
+        name: getaccesstoken
+        description: Cyclr Get Access Token
+        call: cyclr-authentication.getaccesstoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cyclr-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cyclr API — Authentication. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cyclr-get-access-token
+      description: Cyclr Get Access Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cyclr-authentication.getaccesstoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

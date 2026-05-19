@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cyclr API — Marketplace
+  description: 'Cyclr API — Marketplace. 1 operations. Lead operation: Cyclr Deploy Marketplace. Self-contained Naftiko capability
+    covering one Cyclr business surface.'
+  tags:
+  - Cyclr
+  - Marketplace
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CYCLR_API_KEY: CYCLR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cyclr-marketplace
+    baseUri: https://api.cyclr.com/v1.0
+    description: Cyclr API — Marketplace business capability. Self-contained, no shared references.
+    resources:
+    - name: users-marketplace
+      path: /users/marketplace
+      operations:
+      - name: deploymarketplace
+        method: POST
+        description: Cyclr Deploy Marketplace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CYCLR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cyclr-marketplace-rest
+    port: 8080
+    description: REST adapter for Cyclr API — Marketplace. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/users/marketplace
+      name: users-marketplace
+      description: REST surface for users-marketplace.
+      operations:
+      - method: POST
+        name: deploymarketplace
+        description: Cyclr Deploy Marketplace
+        call: cyclr-marketplace.deploymarketplace
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cyclr-marketplace-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cyclr API — Marketplace. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cyclr-deploy-marketplace
+      description: Cyclr Deploy Marketplace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cyclr-marketplace.deploymarketplace
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,159 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cyclr API — Templates
+  description: 'Cyclr API — Templates. 3 operations. Lead operation: Cyclr List Templates. Self-contained Naftiko capability
+    covering one Cyclr business surface.'
+  tags:
+  - Cyclr
+  - Templates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CYCLR_API_KEY: CYCLR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cyclr-templates
+    baseUri: https://api.cyclr.com/v1.0
+    description: Cyclr API — Templates business capability. Self-contained, no shared references.
+    resources:
+    - name: templates
+      path: /templates
+      operations:
+      - name: listtemplates
+        method: GET
+        description: Cyclr List Templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          type: integer
+          description: Number of results per page
+    - name: templates-templateId
+      path: /templates/{templateId}
+      operations:
+      - name: gettemplate
+        method: GET
+        description: Cyclr Get Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: templates-templateId-install
+      path: /templates/{templateId}/install
+      operations:
+      - name: installtemplate
+        method: POST
+        description: Cyclr Install Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.CYCLR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cyclr-templates-rest
+    port: 8080
+    description: REST adapter for Cyclr API — Templates. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/templates
+      name: templates
+      description: REST surface for templates.
+      operations:
+      - method: GET
+        name: listtemplates
+        description: Cyclr List Templates
+        call: cyclr-templates.listtemplates
+        with:
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/templates/{templateid}
+      name: templates-templateid
+      description: REST surface for templates-templateId.
+      operations:
+      - method: GET
+        name: gettemplate
+        description: Cyclr Get Template
+        call: cyclr-templates.gettemplate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/templates/{templateid}/install
+      name: templates-templateid-install
+      description: REST surface for templates-templateId-install.
+      operations:
+      - method: POST
+        name: installtemplate
+        description: Cyclr Install Template
+        call: cyclr-templates.installtemplate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cyclr-templates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cyclr API — Templates. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cyclr-list-templates
+      description: Cyclr List Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cyclr-templates.listtemplates
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-get-template
+      description: Cyclr Get Template
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cyclr-templates.gettemplate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-install-template
+      description: Cyclr Install Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cyclr-templates.installtemplate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cyclr API — Cycles
+  description: 'Cyclr API — Cycles. 5 operations. Lead operation: Cyclr List Cycles. Self-contained Naftiko capability covering
+    one Cyclr business surface.'
+  tags:
+  - Cyclr
+  - Cycles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CYCLR_API_KEY: CYCLR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cyclr-cycles
+    baseUri: https://api.cyclr.com/v1.0
+    description: Cyclr API — Cycles business capability. Self-contained, no shared references.
+    resources:
+    - name: cycles
+      path: /cycles
+      operations:
+      - name: listcycles
+        method: GET
+        description: Cyclr List Cycles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          type: integer
+          description: Number of results per page
+    - name: cycles-cycleId
+      path: /cycles/{cycleId}
+      operations:
+      - name: getcycle
+        method: GET
+        description: Cyclr Get Cycle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecycle
+        method: DELETE
+        description: Cyclr Delete Cycle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cycles-cycleId-activate
+      path: /cycles/{cycleId}/activate
+      operations:
+      - name: activatecycle
+        method: PUT
+        description: Cyclr Activate Cycle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cycles-cycleId-deactivate
+      path: /cycles/{cycleId}/deactivate
+      operations:
+      - name: deactivatecycle
+        method: PUT
+        description: Cyclr Deactivate Cycle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.CYCLR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cyclr-cycles-rest
+    port: 8080
+    description: REST adapter for Cyclr API — Cycles. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/cycles
+      name: cycles
+      description: REST surface for cycles.
+      operations:
+      - method: GET
+        name: listcycles
+        description: Cyclr List Cycles
+        call: cyclr-cycles.listcycles
+        with:
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cycles/{cycleid}
+      name: cycles-cycleid
+      description: REST surface for cycles-cycleId.
+      operations:
+      - method: GET
+        name: getcycle
+        description: Cyclr Get Cycle
+        call: cyclr-cycles.getcycle
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecycle
+        description: Cyclr Delete Cycle
+        call: cyclr-cycles.deletecycle
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cycles/{cycleid}/activate
+      name: cycles-cycleid-activate
+      description: REST surface for cycles-cycleId-activate.
+      operations:
+      - method: PUT
+        name: activatecycle
+        description: Cyclr Activate Cycle
+        call: cyclr-cycles.activatecycle
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cycles/{cycleid}/deactivate
+      name: cycles-cycleid-deactivate
+      description: REST surface for cycles-cycleId-deactivate.
+      operations:
+      - method: PUT
+        name: deactivatecycle
+        description: Cyclr Deactivate Cycle
+        call: cyclr-cycles.deactivatecycle
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cyclr-cycles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cyclr API — Cycles. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cyclr-list-cycles
+      description: Cyclr List Cycles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cyclr-cycles.listcycles
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-get-cycle
+      description: Cyclr Get Cycle
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cyclr-cycles.getcycle
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-delete-cycle
+      description: Cyclr Delete Cycle
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cyclr-cycles.deletecycle
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-activate-cycle
+      description: Cyclr Activate Cycle
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cyclr-cycles.activatecycle
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-deactivate-cycle
+      description: Cyclr Deactivate Cycle
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cyclr-cycles.deactivatecycle
+      outputParameters:
+      - type: object
+        mapping: $.

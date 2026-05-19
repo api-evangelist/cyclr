@@ -1,0 +1,244 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cyclr API — Accounts
+  description: 'Cyclr API — Accounts. 6 operations. Lead operation: Cyclr List Accounts. Self-contained Naftiko capability
+    covering one Cyclr business surface.'
+  tags:
+  - Cyclr
+  - Accounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CYCLR_API_KEY: CYCLR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cyclr-accounts
+    baseUri: https://api.cyclr.com/v1.0
+    description: Cyclr API — Accounts business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts
+      path: /accounts
+      operations:
+      - name: listaccounts
+        method: GET
+        description: Cyclr List Accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: pageSize
+          in: query
+          type: integer
+          description: Number of results per page
+      - name: createaccount
+        method: POST
+        description: Cyclr Create Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts-accountId
+      path: /accounts/{accountId}
+      operations:
+      - name: getaccount
+        method: GET
+        description: Cyclr Get Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateaccount
+        method: PUT
+        description: Cyclr Update Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteaccount
+        method: DELETE
+        description: Cyclr Delete Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountId-signintoken
+      path: /accounts/{accountId}/signintoken
+      operations:
+      - name: getaccountsignintoken
+        method: POST
+        description: Cyclr Get Account Sign-In Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.CYCLR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cyclr-accounts-rest
+    port: 8080
+    description: REST adapter for Cyclr API — Accounts. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/accounts
+      name: accounts
+      description: REST surface for accounts.
+      operations:
+      - method: GET
+        name: listaccounts
+        description: Cyclr List Accounts
+        call: cyclr-accounts.listaccounts
+        with:
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createaccount
+        description: Cyclr Create Account
+        call: cyclr-accounts.createaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}
+      name: accounts-accountid
+      description: REST surface for accounts-accountId.
+      operations:
+      - method: GET
+        name: getaccount
+        description: Cyclr Get Account
+        call: cyclr-accounts.getaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateaccount
+        description: Cyclr Update Account
+        call: cyclr-accounts.updateaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaccount
+        description: Cyclr Delete Account
+        call: cyclr-accounts.deleteaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/signintoken
+      name: accounts-accountid-signintoken
+      description: REST surface for accounts-accountId-signintoken.
+      operations:
+      - method: POST
+        name: getaccountsignintoken
+        description: Cyclr Get Account Sign-In Token
+        call: cyclr-accounts.getaccountsignintoken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cyclr-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cyclr API — Accounts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cyclr-list-accounts
+      description: Cyclr List Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cyclr-accounts.listaccounts
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-create-account
+      description: Cyclr Create Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cyclr-accounts.createaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-get-account
+      description: Cyclr Get Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cyclr-accounts.getaccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-update-account
+      description: Cyclr Update Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cyclr-accounts.updateaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-delete-account
+      description: Cyclr Delete Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cyclr-accounts.deleteaccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cyclr-get-account-sign-token
+      description: Cyclr Get Account Sign-In Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cyclr-accounts.getaccountsignintoken
+      outputParameters:
+      - type: object
+        mapping: $.
