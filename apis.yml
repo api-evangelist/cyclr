@@ -16,228 +16,230 @@ created: '2025-06-06'
 modified: '2026-05-19'
 specificationVersion: '0.20'
 tags:
-- Connectors
-- Custom Connectors
-- Data Synchronization
-- Embedded iPaaS
-- Embedded SaaS Integration
-- Embedded UI
-- Integration Platform
-- Integrations
-- Marketplace
-- OAuth 2.0
-- REST API
-- SaaS
-- Templates
-- Webhooks
-- White Label
-- Workflows
-apis:
-- aid: cyclr:api
-  name: Cyclr API
-  description: Cyclr's REST API allows partners to manage their accounts, install and authenticate connectors, install templates
-    as cycles, build and configure cycle steps, and embed LAUNCH and Marketplace UIs into their host SaaS product. Authentication
-    uses OAuth 2.0 client credentials issued in the Cyclr Console; account-scoped operations include the X-Cyclr-Account HTTP
-    header.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  humanURL: https://cyclr.com
-  baseURL: https://api.cyclr.com/v1.0
-  tags:
-  - Accounts
   - Connectors
-  - Cycles
+  - Custom Connectors
+  - Data Synchronization
+  - Embedded iPaaS
+  - Embedded SaaS Integration
   - Embedded UI
+  - Integration Platform
+  - Integrations
+  - Marketplace
   - OAuth 2.0
-  - REST
-  - Steps
+  - REST API
+  - SaaS
   - Templates
-  properties:
-  - type: Documentation
-    url: https://cyclr.com
-  - type: APIDocumentation
-    url: https://docs.cyclr.com/api/
-  - type: APIReference
-    url: https://api.cyclr.com/docs/index
-  - type: OpenAPI
-    url: openapi/cyclr-cyclr-openapi.yml
-  - type: AsyncAPI
-    url: asyncapi/cyclr-cyclr-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/cyclr-account.json
-  - type: JSONSchema
-    url: json-schema/cyclr-connector.json
-  - type: JSONSchema
-    url: json-schema/cyclr-installed-connector.json
-  - type: JSONSchema
-    url: json-schema/cyclr-template.json
-  - type: JSONSchema
-    url: json-schema/cyclr-cycle.json
-  - type: JSONSchema
-    url: json-schema/cyclr-step.json
-  - type: JSONLD
-    url: json-ld/cyclr-context.jsonld
+  - Webhooks
+  - White Label
+  - Workflows
+apis:
+  - aid: cyclr:api
+    name: Cyclr API
+    description: Cyclr's REST API allows partners to manage their accounts, install and authenticate connectors, install templates
+      as cycles, build and configure cycle steps, and embed LAUNCH and Marketplace UIs into their host SaaS product. Authentication
+      uses OAuth 2.0 client credentials issued in the Cyclr Console; account-scoped operations include the X-Cyclr-Account HTTP
+      header.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://cyclr.com
+    baseURL: https://api.cyclr.com/v1.0
+    tags:
+    - Accounts
+    - Connectors
+    - Cycles
+    - Embedded UI
+    - OAuth 2.0
+    - REST
+    - Steps
+    - Templates
+    properties:
+    - type: Documentation
+      url: https://cyclr.com
+    - type: APIDocumentation
+      url: https://docs.cyclr.com/api/
+    - type: APIReference
+      url: https://api.cyclr.com/docs/index
+    - type: OpenAPI
+      url: openapi/cyclr-cyclr-openapi.yml
+    - type: AsyncAPI
+      url: asyncapi/cyclr-cyclr-asyncapi.yml
+    - type: JSONSchema
+      url: json-schema/cyclr-account.json
+    - type: JSONSchema
+      url: json-schema/cyclr-connector.json
+    - type: JSONSchema
+      url: json-schema/cyclr-installed-connector.json
+    - type: JSONSchema
+      url: json-schema/cyclr-template.json
+    - type: JSONSchema
+      url: json-schema/cyclr-cycle.json
+    - type: JSONSchema
+      url: json-schema/cyclr-step.json
+    - type: JSONLD
+      url: json-ld/cyclr-context.jsonld
+    - type: Capabilities
+      url: capabilities/cyclr-api-capabilities.yml
+    - type: Rules
+      url: rules/cyclr-api-rules.yml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-accounts.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-authentication.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-connectors.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-cycles.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-data-on-demand.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-launch.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-marketplace.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-steps.yaml
+    - type: NaftikoCapability
+      url: capabilities/cyclr-templates.yaml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/cyclr
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/cyclr-systems-ltd
+  - type: Website
+    url: https://cyclr.com/
+  - type: Connectors
+    url: https://cyclr.com/connectors
+  - type: Pricing
+    url: https://cyclr.com/product/pricing
+  - type: CaseStudies
+    url: https://cyclr.com/case-studies
+  - type: Webinars
+    url: https://cyclr.com/resources/webinars
+  - type: Blog
+    url: https://cyclr.com/blog
+  - type: Branding
+    url: https://cyclr.com/brand
+  - type: Partners
+    url: https://cyclr.com/become-a-partner
+  - type: Security
+    url: https://cyclr.com/security-and-compliance
+  - type: GDPR
+    url: https://cyclr.com/legal/gdpr-compliance
+  - type: SLA
+    url: https://cyclr.com/sla
+  - type: ChangeLog
+    url: https://community.cyclr.com/user-documentation/release-notes/introduction-to-release-notes
+  - type: Login
+    url: https://my.cyclr.com/account/login
+  - type: GetStarted
+    url: https://cyclr.com/get-started
+  - type: Vocabulary
+    url: vocabulary/cyclr-vocabulary.yml
   - type: Capabilities
     url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-accounts.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-authentication.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-connectors.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-cycles.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-data-on-demand.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-launch.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-marketplace.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-steps.yaml
-  - type: NaftikoCapability
-    url: capabilities/cyclr-templates.yaml
-common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/cyclr-systems-ltd
-- type: Website
-  url: https://cyclr.com/
-- type: Connectors
-  url: https://cyclr.com/connectors
-- type: Pricing
-  url: https://cyclr.com/product/pricing
-- type: CaseStudies
-  url: https://cyclr.com/case-studies
-- type: Webinars
-  url: https://cyclr.com/resources/webinars
-- type: Blog
-  url: https://cyclr.com/blog
-- type: Branding
-  url: https://cyclr.com/brand
-- type: Partners
-  url: https://cyclr.com/become-a-partner
-- type: Security
-  url: https://cyclr.com/security-and-compliance
-- type: GDPR
-  url: https://cyclr.com/legal/gdpr-compliance
-- type: SLA
-  url: https://cyclr.com/sla
-- type: ChangeLog
-  url: https://community.cyclr.com/user-documentation/release-notes/introduction-to-release-notes
-- type: Login
-  url: https://my.cyclr.com/account/login
-- type: GetStarted
-  url: https://cyclr.com/get-started
-- type: Vocabulary
-  url: vocabulary/cyclr-vocabulary.yml
-- type: Capabilities
-  url: capabilities/cyclr-api-capabilities.yml
-- type: Rules
-  url: rules/cyclr-api-rules.yml
-- type: Integrations
-  url: https://cyclr.com/connectors
+  - type: Integrations
+    url: https://cyclr.com/connectors
 integrations:
-- name: Connector Creation Toolkit
-- name: Salesforce
-- name: Hubspot
-- name: Microsoft Dynamics
-- name: Oracle Netsuite
-- name: Shopify
-- name: Amazon S3
-- name: Database Connectors
-- name: Universal Connectors
-- name: 3D Cart
-- name: Access CRM
-- name: Act!
-- name: Actionstep
-- name: ActiveCampaign
-- name: Adobe Campaign
-- name: Adobe PDF Extract API
-- name: Adobe Sign
-- name: ADP
-- name: AdPage
-- name: Aesthetic Record
-- name: Aircall
-- name: Airship
-- name: Airtable
-- name: Akeneo
-- name: AlertMedia
-- name: Alto
-- name: Amadeus
-- name: Amazon Connect
-- name: Amazon EC2
-- name: Amazon Selling Partner
-- name: AmeriCommerce
-- name: Answerbase
-- name: Any Other Application
-- name: Apollo.io
-- name: Apple iCloud Contacts
-- name: Asana
-- name: Authorize.net
-- name: AutoReach
-- name: Autotask
-- name: AWS Backup
-- name: Azure AI Document Intelligence
-- name: BambooHR
-- name: Basecamp
-- name: BatchDialer
-- name: Benchmark Email
-- name: BHN Rewards
-- name: BigChange
-- name: BigCommerce
-- name: Bird
-- name: Bitrix24
-- name: Bloomreach
-- name: Bluecore
-- name: BNTouch Mortgage CRM
-- name: bob HR
-- name: Bookafy
-- name: Bookeo
-- name: Booker
-- name: Box
-- name: Brandbot
-- name: Breathe HR
-- name: Brevo
-- name: Brightspace
-- name: Briostack
-- name: BriteVerify
-- name: Bronto
-- name: Bullhorn
-- name: Businessmap
-- name: Calendly
-- name: CallRail
-- name: CampusIvy
-- name: Cap HPI
-- name: Capitus
-- name: Capsule
-- name: Cardpointe
-- name: Caspio
-- name: Cendyn
-- name: Chargebee
-- name: Chargify
-- name: ChatGPT
-- name: Cheetah
-- name: Childcare CRM
-- name: Claude
-- name: ClickSend SMS
-- name: Cloud4Wi
-- name: Clover
-- name: Club OS
-- name: Club Ready
-- name: Clubspeed
-- name: Cognism
-- name: CoinGecko
-- name: ConnectWise Manage
-- name: ConnectWise PSA
-- name: Constant Contact
-- name: Contact Form 7 Plugin
-- name: Converge
-- name: Copper
-- name: Counterpoint
-- name: Creatio
-- name: Creditsafe
-- name: Crunch
+  - name: Connector Creation Toolkit
+  - name: Salesforce
+  - name: Hubspot
+  - name: Microsoft Dynamics
+  - name: Oracle Netsuite
+  - name: Shopify
+  - name: Amazon S3
+  - name: Database Connectors
+  - name: Universal Connectors
+  - name: 3D Cart
+  - name: Access CRM
+  - name: Act!
+  - name: Actionstep
+  - name: ActiveCampaign
+  - name: Adobe Campaign
+  - name: Adobe PDF Extract API
+  - name: Adobe Sign
+  - name: ADP
+  - name: AdPage
+  - name: Aesthetic Record
+  - name: Aircall
+  - name: Airship
+  - name: Airtable
+  - name: Akeneo
+  - name: AlertMedia
+  - name: Alto
+  - name: Amadeus
+  - name: Amazon Connect
+  - name: Amazon EC2
+  - name: Amazon Selling Partner
+  - name: AmeriCommerce
+  - name: Answerbase
+  - name: Any Other Application
+  - name: Apollo.io
+  - name: Apple iCloud Contacts
+  - name: Asana
+  - name: Authorize.net
+  - name: AutoReach
+  - name: Autotask
+  - name: AWS Backup
+  - name: Azure AI Document Intelligence
+  - name: BambooHR
+  - name: Basecamp
+  - name: BatchDialer
+  - name: Benchmark Email
+  - name: BHN Rewards
+  - name: BigChange
+  - name: BigCommerce
+  - name: Bird
+  - name: Bitrix24
+  - name: Bloomreach
+  - name: Bluecore
+  - name: BNTouch Mortgage CRM
+  - name: bob HR
+  - name: Bookafy
+  - name: Bookeo
+  - name: Booker
+  - name: Box
+  - name: Brandbot
+  - name: Breathe HR
+  - name: Brevo
+  - name: Brightspace
+  - name: Briostack
+  - name: BriteVerify
+  - name: Bronto
+  - name: Bullhorn
+  - name: Businessmap
+  - name: Calendly
+  - name: CallRail
+  - name: CampusIvy
+  - name: Cap HPI
+  - name: Capitus
+  - name: Capsule
+  - name: Cardpointe
+  - name: Caspio
+  - name: Cendyn
+  - name: Chargebee
+  - name: Chargify
+  - name: ChatGPT
+  - name: Cheetah
+  - name: Childcare CRM
+  - name: Claude
+  - name: ClickSend SMS
+  - name: Cloud4Wi
+  - name: Clover
+  - name: Club OS
+  - name: Club Ready
+  - name: Clubspeed
+  - name: Cognism
+  - name: CoinGecko
+  - name: ConnectWise Manage
+  - name: ConnectWise PSA
+  - name: Constant Contact
+  - name: Contact Form 7 Plugin
+  - name: Converge
+  - name: Copper
+  - name: Counterpoint
+  - name: Creatio
+  - name: Creditsafe
+  - name: Crunch
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
