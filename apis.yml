@@ -139,6 +139,8 @@ common:
     url: rules/cyclr-api-rules.yml
   - type: Integrations
     url: https://cyclr.com/connectors
+  - type: LLMsTxt
+    url: https://cyclr.com/llms.txt
 integrations:
   - name: Connector Creation Toolkit
   - name: Salesforce
