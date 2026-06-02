@@ -2,12 +2,20 @@
   "repo": "cyclr",
   "feeds": [
     {
-      "source": "https://cyclr.com/blog",
+      "source": "https://cyclr.com/blog/feed/",
       "feed_url": "https://cyclr.com/blog/feed/",
-      "title": "The Cyclr Blog | Exploring SaaS Integration, iPaaS, APIs, AI & More",
-      "saved": 4
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://cyclr.com/resources/webinars",
+      "feed_url": "https://cyclr.com/resources/webinars",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 15,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 18,
+  "fetched": "2026-06-01T23:35:02Z"
 }
