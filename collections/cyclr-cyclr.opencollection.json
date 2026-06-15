@@ -1,0 +1,757 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Get Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain an OAuth 2.0 access token using Client Credentials flow. Provide your Cyclr Console Client ID and Client Secret to receive a Bearer token for use with all other API endpoints."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/accounts",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all Cyclr accounts under the partner."
+        },
+        {
+          "info": {
+            "name": "Cyclr Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Cyclr account under the partner."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific Cyclr account."
+        },
+        {
+          "info": {
+            "name": "Cyclr Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Cyclr account."
+        },
+        {
+          "info": {
+            "name": "Cyclr Delete Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ]
+          },
+          "docs": "Delete a specific Cyclr account."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Account Sign-In Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId/signintoken",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ]
+          },
+          "docs": "Generate a sign-in token for a specific account, allowing access to the Cyclr console for that account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/connectors",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter connectors by name"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available connectors. Use the query parameter to filter by connector name."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/connectors/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the connector"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific connector."
+        },
+        {
+          "info": {
+            "name": "Cyclr Install Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/connectors/:connectorId/install",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the connector"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Install a connector into the current account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr List Account Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/account/connectors",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List all connectors installed in the current account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Account Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/account/connectors/:installedConnectorId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "installedConnectorId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the installed connector"
+              }
+            ]
+          },
+          "docs": "Get details of a specific installed connector in the account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Delete Account Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cyclr.com/v1.0/account/connectors/:installedConnectorId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "installedConnectorId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the installed connector"
+              }
+            ]
+          },
+          "docs": "Remove an installed connector from the account. Requires the X-Cyclr-Account header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/templates",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available integration templates."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/templates/:templateId",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the template"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific integration template."
+        },
+        {
+          "info": {
+            "name": "Cyclr Install Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/templates/:templateId/install",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the template"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Install an integration template into the current account. Requires the X-Cyclr-Account header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cycles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Cycles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/cycles",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all cycles in the current account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Delete Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Delete a specific cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Activate Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId/activate",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Activate a cycle so it begins running. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Deactivate Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId/deactivate",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Deactivate a running cycle. Requires the X-Cyclr-Account header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Steps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Get Step Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/parameters",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ]
+          },
+          "docs": "Get the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Update Step Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/parameters",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Step Field Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/fieldmappings",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ]
+          },
+          "docs": "Get the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Update Step Field Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/fieldmappings",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "LAUNCH",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Deploy LAUNCH",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/users/launch",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy the LAUNCH integration UI for a specific user, providing them with an interactive interface to set up integrations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Marketplace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Deploy Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/users/marketplace",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy the Marketplace integration UI for a specific user, providing them with an interface to browse and install available integrations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data on Demand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Data On Demand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/data",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a data request through an installed connector, allowing you to make API-driven data requests without working with cycles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
