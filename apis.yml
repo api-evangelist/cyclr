@@ -90,7 +90,7 @@ common:
     url: https://www.linkedin.com/company/cyclr-systems-ltd
   - type: Website
     url: https://cyclr.com/
-  - type: Connectors
+  - type: Integrations
     url: https://cyclr.com/connectors
   - type: Pricing
     url: https://cyclr.com/product/pricing
@@ -108,7 +108,7 @@ common:
     url: https://cyclr.com/security-and-compliance
   - type: GDPR
     url: https://cyclr.com/legal/gdpr-compliance
-  - type: SLA
+  - type: ServiceLevelAgreement
     url: https://cyclr.com/sla
   - type: ChangeLog
     url: https://community.cyclr.com/user-documentation/release-notes/introduction-to-release-notes
@@ -124,7 +124,7 @@ common:
     url: rules/cyclr-api-rules.yml
   - type: Integrations
     url: https://cyclr.com/connectors
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://cyclr.com/llms.txt
 integrations:
   - name: Connector Creation Toolkit
