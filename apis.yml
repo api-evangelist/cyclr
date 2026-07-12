@@ -84,6 +84,10 @@ apis:
       - type: Rules
         url: rules/cyclr-api-rules.yml
 common:
+  - type: DomainSecurity
+    url: security/cyclr-domain-security.yml
+  - type: Authentication
+    url: authentication/cyclr-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/cyclr
   - type: LinkedIn

@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/cyclr-cyclr-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials
+    flow with your Cyclr Console Client ID and Client Secret.
+  sources:
+  - openapi/cyclr-cyclr-openapi.yml
