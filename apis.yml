@@ -84,6 +84,8 @@ apis:
       - type: Rules
         url: rules/cyclr-api-rules.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/cyclr-agentic-access.yml
   - type: DomainSecurity
     url: security/cyclr-domain-security.yml
   - type: Authentication
