@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: Cyclr Accounts Steps API
+  description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+- url: https://api.cyclr.com/v1.0
+  description: Cyclr US API
+- url: https://api.eu.cyclr.com/v1.0
+  description: Cyclr EU API
+- url: https://api.au.cyclr.com/v1.0
+  description: Cyclr AU API
+security:
+- bearerAuth: []
+tags:
+- name: Steps
+  description: Manage cycle steps, parameters, and field mappings
+paths:
+  /steps/{stepId}/parameters:
+    get:
+      operationId: getStepParameters
+      summary: Cyclr Get Step Parameters
+      description: Get the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header.
+      tags:
+      - Steps
+      parameters:
+      - $ref: '#/components/parameters/stepId'
+      - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StepParameter'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+    put:
+      operationId: updateStepParameters
+      summary: Cyclr Update Step Parameters
+      description: Update the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header.
+      tags:
+      - Steps
+      parameters:
+      - $ref: '#/components/parameters/stepId'
+      - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StepParameter'
+      responses:
+        '200':
+          description: Parameters updated successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+  /steps/{stepId}/fieldmappings:
+    get:
+      operationId: getStepFieldMappings
+      summary: Cyclr Get Step Field Mappings
+      description: Get the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header.
+      tags:
+      - Steps
+      parameters:
+      - $ref: '#/components/parameters/stepId'
+      - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldMapping'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+    put:
+      operationId: updateStepFieldMappings
+      summary: Cyclr Update Step Field Mappings
+      description: Update the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header.
+      tags:
+      - Steps
+      parameters:
+      - $ref: '#/components/parameters/stepId'
+      - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FieldMapping'
+      responses:
+        '200':
+          description: Field mappings updated successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Step not found
+components:
+  parameters:
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+    stepId:
+      name: stepId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the step
+  schemas:
+    FieldMapping:
+      type: object
+      properties:
+        SourceFieldName:
+          type: string
+          description: Source field name for the mapping
+        TargetFieldName:
+          type: string
+          description: Target field name for the mapping
+        Value:
+          type: string
+          description: Static value for the mapping
+        TriggerValue:
+          type: string
+          description: Trigger value for the mapping
+    StepParameter:
+      type: object
+      properties:
+        TargetFieldName:
+          type: string
+          description: Name of the target parameter field
+        Value:
+          type: string
+          description: Value of the parameter
+        TriggerValue:
+          type: string
+          description: Trigger value for the parameter
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials flow with your Cyclr Console Client ID and Client Secret.

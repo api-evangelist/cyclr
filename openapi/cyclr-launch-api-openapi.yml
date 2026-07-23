@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Cyclr Accounts LAUNCH API
+  description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+- url: https://api.cyclr.com/v1.0
+  description: Cyclr US API
+- url: https://api.eu.cyclr.com/v1.0
+  description: Cyclr EU API
+- url: https://api.au.cyclr.com/v1.0
+  description: Cyclr AU API
+security:
+- bearerAuth: []
+tags:
+- name: LAUNCH
+  description: Deploy LAUNCH integration UI for end users
+paths:
+  /users/launch:
+    post:
+      operationId: deployLaunch
+      summary: Cyclr Deploy LAUNCH
+      description: Deploy the LAUNCH integration UI for a specific user, providing them with an interactive interface to set up integrations.
+      tags:
+      - LAUNCH
+      parameters:
+      - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - Username
+              properties:
+                Username:
+                  type: string
+                  description: The username of the user accessing LAUNCH
+                Password:
+                  type: string
+                  description: Optional password for the user
+                AccountName:
+                  type: string
+                  description: Display name for the account
+                ConnectorAuthentications:
+                  type: array
+                  description: Pre-configured connector authentications
+                  items:
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                      Version:
+                        type: string
+                      AuthValue:
+                        type: string
+                      Properties:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            Name:
+                              type: string
+                            Value:
+                              type: string
+      responses:
+        '200':
+          description: LAUNCH deployed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AccountId:
+                    type: string
+                    description: The Cyclr account ID
+                  ExpiresAtUtc:
+                    type: string
+                    format: date-time
+                    description: When the LAUNCH token expires
+                  LaunchUrl:
+                    type: string
+                    format: uri
+                    description: URL to redirect the user to for LAUNCH
+                  Token:
+                    type: string
+                    description: LAUNCH access token
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  parameters:
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials flow with your Cyclr Console Client ID and Client Secret.

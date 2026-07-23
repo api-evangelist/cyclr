@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: Cyclr Accounts Data on Demand API
+  description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+- url: https://api.cyclr.com/v1.0
+  description: Cyclr US API
+- url: https://api.eu.cyclr.com/v1.0
+  description: Cyclr EU API
+- url: https://api.au.cyclr.com/v1.0
+  description: Cyclr AU API
+security:
+- bearerAuth: []
+tags:
+- name: Data on Demand
+  description: API-driven data requests (proxy)
+paths:
+  /data:
+    post:
+      operationId: dataOnDemand
+      summary: Cyclr Data On Demand
+      description: Execute a data request through an installed connector, allowing you to make API-driven data requests without working with cycles.
+      tags:
+      - Data on Demand
+      parameters:
+      - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ConnectorAccountId:
+                  type: string
+                  description: The ID of the installed connector
+                MethodId:
+                  type: string
+                  description: The ID of the connector method to call
+                Parameters:
+                  type: array
+                  description: Parameters for the method call
+                  items:
+                    type: object
+                    properties:
+                      TargetFieldName:
+                        type: string
+                      Value:
+                        type: string
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response data from the connector method
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  parameters:
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials flow with your Cyclr Console Client ID and Client Secret.

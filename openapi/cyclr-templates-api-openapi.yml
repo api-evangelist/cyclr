@@ -1,0 +1,234 @@
+openapi: 3.1.0
+info:
+  title: Cyclr Accounts Templates API
+  description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+- url: https://api.cyclr.com/v1.0
+  description: Cyclr US API
+- url: https://api.eu.cyclr.com/v1.0
+  description: Cyclr EU API
+- url: https://api.au.cyclr.com/v1.0
+  description: Cyclr AU API
+security:
+- bearerAuth: []
+tags:
+- name: Templates
+  description: Manage and install integration templates
+paths:
+  /templates:
+    get:
+      operationId: listTemplates
+      summary: Cyclr List Templates
+      description: Retrieve a list of available integration templates.
+      tags:
+      - Templates
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+        description: Page number for pagination
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+        description: Number of results per page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template'
+        '401':
+          description: Unauthorized
+  /templates/{templateId}:
+    get:
+      operationId: getTemplate
+      summary: Cyclr Get Template
+      description: Retrieve details of a specific integration template.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/templateId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Template not found
+  /templates/{templateId}/install:
+    post:
+      operationId: installTemplate
+      summary: Cyclr Install Template
+      description: Install an integration template into the current account. Requires the X-Cyclr-Account header.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/templateId'
+      - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                  description: Display name for the installed cycle
+                Description:
+                  type: string
+                  description: Description for the installed cycle
+      responses:
+        '200':
+          description: Template installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cycle'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Template not found
+components:
+  parameters:
+    templateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the template
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+  schemas:
+    Cycle:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique cycle identifier
+        Name:
+          type: string
+          description: Cycle name
+        Description:
+          type: string
+          description: Cycle description
+        Status:
+          type: string
+          description: Current cycle status
+          enum:
+          - Active
+          - Inactive
+          - Paused
+          - Error
+        CreatedDate:
+          type: string
+          format: date-time
+          description: When the cycle was created
+        LastRunDate:
+          type: string
+          format: date-time
+          description: When the cycle last ran
+        Connectors:
+          type: array
+          description: Connectors used by the cycle
+          items:
+            $ref: '#/components/schemas/InstalledConnector'
+        Steps:
+          type: array
+          description: Steps in the cycle
+          items:
+            $ref: '#/components/schemas/Step'
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
+    Template:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique template identifier
+        Name:
+          type: string
+          description: Template name
+        Description:
+          type: string
+          description: Template description
+        Connectors:
+          type: array
+          description: Connectors used by the template
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+              Name:
+                type: string
+        Tags:
+          type: array
+          description: Tags associated with the template
+          items:
+            type: string
+    Step:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: Unique step identifier
+        Name:
+          type: string
+          description: Step name
+        Description:
+          type: string
+          description: Step description
+        ConnectorId:
+          type: integer
+          description: ID of the connector used by this step
+        MethodId:
+          type: string
+          description: ID of the method called by this step
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials flow with your Cyclr Console Client ID and Client Secret.

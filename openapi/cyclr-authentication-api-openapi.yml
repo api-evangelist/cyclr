@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Cyclr Accounts Authentication API
+  description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+- url: https://api.cyclr.com/v1.0
+  description: Cyclr US API
+- url: https://api.eu.cyclr.com/v1.0
+  description: Cyclr EU API
+- url: https://api.au.cyclr.com/v1.0
+  description: Cyclr AU API
+security:
+- bearerAuth: []
+tags:
+- name: Authentication
+  description: Obtain access tokens for API authentication
+paths:
+  /oauth/token:
+    post:
+      operationId: getAccessToken
+      summary: Cyclr Get Access Token
+      description: Obtain an OAuth 2.0 access token using Client Credentials flow. Provide your Cyclr Console Client ID and Client Secret to receive a Bearer token for use with all other API endpoints.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - client_id
+              - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - client_credentials
+                  description: OAuth 2.0 grant type
+                client_id:
+                  type: string
+                  description: Your Cyclr Console Client ID
+                client_secret:
+                  type: string
+                  description: Your Cyclr Console Client Secret
+      responses:
+        '200':
+          description: Access token issued successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: The Bearer access token
+                  token_type:
+                    type: string
+                    description: Token type (Bearer)
+                  expires_in:
+                    type: integer
+                    description: Token expiry time in seconds
+        '400':
+          description: Invalid credentials or request
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials flow with your Cyclr Console Client ID and Client Secret.

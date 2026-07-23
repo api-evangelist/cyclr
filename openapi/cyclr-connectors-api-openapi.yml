@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: Cyclr Accounts Connectors API
+  description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
+  version: 1.0.0
+  contact:
+    name: Cyclr
+    url: https://cyclr.com
+  license:
+    name: Proprietary
+    url: https://cyclr.com/legal
+servers:
+- url: https://api.cyclr.com/v1.0
+  description: Cyclr US API
+- url: https://api.eu.cyclr.com/v1.0
+  description: Cyclr EU API
+- url: https://api.au.cyclr.com/v1.0
+  description: Cyclr AU API
+security:
+- bearerAuth: []
+tags:
+- name: Connectors
+  description: Manage and install connectors
+paths:
+  /connectors:
+    get:
+      operationId: listConnectors
+      summary: Cyclr List Connectors
+      description: Retrieve a list of available connectors. Use the query parameter to filter by connector name.
+      tags:
+      - Connectors
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Filter connectors by name
+      - name: page
+        in: query
+        schema:
+          type: integer
+        description: Page number for pagination
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+        description: Number of results per page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connector'
+        '401':
+          description: Unauthorized
+  /connectors/{connectorId}:
+    get:
+      operationId: getConnector
+      summary: Cyclr Get Connector
+      description: Retrieve details of a specific connector.
+      tags:
+      - Connectors
+      parameters:
+      - $ref: '#/components/parameters/connectorId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connector'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Connector not found
+  /connectors/{connectorId}/install:
+    post:
+      operationId: installConnector
+      summary: Cyclr Install Connector
+      description: Install a connector into the current account. Requires the X-Cyclr-Account header.
+      tags:
+      - Connectors
+      parameters:
+      - $ref: '#/components/parameters/connectorId'
+      - $ref: '#/components/parameters/xCyclrAccount'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                  description: Display name for the installed connector
+                Description:
+                  type: string
+                  description: Description for the installed connector
+                AuthValue:
+                  type: string
+                  description: Authentication value for the connector
+      responses:
+        '200':
+          description: Connector installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstalledConnector'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /account/connectors:
+    get:
+      operationId: listAccountConnectors
+      summary: Cyclr List Account Connectors
+      description: List all connectors installed in the current account. Requires the X-Cyclr-Account header.
+      tags:
+      - Connectors
+      parameters:
+      - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstalledConnector'
+        '401':
+          description: Unauthorized
+  /account/connectors/{installedConnectorId}:
+    get:
+      operationId: getAccountConnector
+      summary: Cyclr Get Account Connector
+      description: Get details of a specific installed connector in the account. Requires the X-Cyclr-Account header.
+      tags:
+      - Connectors
+      parameters:
+      - name: installedConnectorId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ID of the installed connector
+      - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstalledConnector'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Installed connector not found
+    delete:
+      operationId: deleteAccountConnector
+      summary: Cyclr Delete Account Connector
+      description: Remove an installed connector from the account. Requires the X-Cyclr-Account header.
+      tags:
+      - Connectors
+      parameters:
+      - name: installedConnectorId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ID of the installed connector
+      - $ref: '#/components/parameters/xCyclrAccount'
+      responses:
+        '200':
+          description: Connector removed successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Installed connector not found
+components:
+  schemas:
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
+    Connector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique connector identifier
+        Name:
+          type: string
+          description: Connector name
+        Description:
+          type: string
+          description: Connector description
+        Status:
+          type: string
+          description: Connector status
+        Version:
+          type: string
+          description: Connector version
+        Icon:
+          type: string
+          description: URL to the connector icon
+        AuthType:
+          type: string
+          description: Authentication type used by the connector
+          enum:
+          - OAuth2
+          - OAuth1
+          - ApiKey
+          - Basic
+          - None
+  parameters:
+    connectorId:
+      name: connectorId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the connector
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token obtained from the /oauth/token endpoint using Client Credentials flow with your Cyclr Console Client ID and Client Secret.
