@@ -1,0 +1,30 @@
+{
+  "provider": "cyclr",
+  "sources": [
+    "cyclr-accounts-api-openapi.yml",
+    "cyclr-authentication-api-openapi.yml",
+    "cyclr-connectors-api-openapi.yml",
+    "cyclr-cycles-api-openapi.yml",
+    "cyclr-data-on-demand-api-openapi.yml",
+    "cyclr-launch-api-openapi.yml",
+    "cyclr-marketplace-api-openapi.yml",
+    "cyclr-steps-api-openapi.yml",
+    "cyclr-templates-api-openapi.yml"
+  ],
+  "outputs": [
+    "cyclr-accounts-api-openapi.yml",
+    "cyclr-authentication-api-openapi.yml",
+    "cyclr-connectors-api-openapi.yml",
+    "cyclr-cycles-api-openapi.yml",
+    "cyclr-data-on-demand-api-openapi.yml",
+    "cyclr-launch-api-openapi.yml",
+    "cyclr-marketplace-api-openapi.yml",
+    "cyclr-steps-api-openapi.yml",
+    "cyclr-templates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
