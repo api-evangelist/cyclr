@@ -80,8 +80,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-authentication-api
@@ -116,8 +114,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-connectors-api
@@ -152,8 +148,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-cycles-api
@@ -188,8 +182,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-data-on-demand-api
@@ -224,8 +216,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-launch-api
@@ -260,8 +250,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-marketplace-api
@@ -296,8 +284,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-steps-api
@@ -332,8 +318,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 - aid: cyclr:cyclr-templates-api
@@ -368,8 +352,6 @@ apis:
     url: json-schema/cyclr-step.json
   - type: JSONLD
     url: json-ld/cyclr-context.jsonld
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
 common:
@@ -413,8 +395,6 @@ common:
     url: https://cyclr.com/get-started
   - type: Vocabulary
     url: vocabulary/cyclr-vocabulary.yml
-  - type: Capabilities
-    url: capabilities/cyclr-api-capabilities.yml
   - type: Rules
     url: rules/cyclr-api-rules.yml
   - type: Integrations
