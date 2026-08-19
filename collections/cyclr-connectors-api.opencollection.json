@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts Connectors API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/connectors",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter connectors by name"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available connectors. Use the query parameter to filter by connector name."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/connectors/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the connector"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific connector."
+        },
+        {
+          "info": {
+            "name": "Cyclr Install Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/connectors/:connectorId/install",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the connector"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Install a connector into the current account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr List Account Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/account/connectors",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List all connectors installed in the current account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Account Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/account/connectors/:installedConnectorId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "installedConnectorId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the installed connector"
+              }
+            ]
+          },
+          "docs": "Get details of a specific installed connector in the account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Delete Account Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cyclr.com/v1.0/account/connectors/:installedConnectorId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "installedConnectorId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the installed connector"
+              }
+            ]
+          },
+          "docs": "Remove an installed connector from the account. Requires the X-Cyclr-Account header."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

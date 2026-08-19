@@ -1,0 +1,701 @@
+{
+  "item": [
+    {
+      "id": "0541fdbf-c376-4f39-9211-ec1f2e19d5dc",
+      "name": "Templates",
+      "description": {
+        "content": "Manage and install integration templates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bccb63d5-ec55-496c-8483-01f8f75c5f36",
+          "name": "Cyclr List Templates",
+          "request": {
+            "name": "Cyclr List Templates",
+            "description": {
+              "content": "Retrieve a list of available integration templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d2a0a3f-d073-462d-a9a8-ad997b371e49",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"Connectors\": [\n      {\n        \"Id\": 4774,\n        \"Name\": \"string\"\n      },\n      {\n        \"Id\": 3051,\n        \"Name\": \"string\"\n      }\n    ],\n    \"Tags\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"Connectors\": [\n      {\n        \"Id\": 635,\n        \"Name\": \"string\"\n      },\n      {\n        \"Id\": 3425,\n        \"Name\": \"string\"\n      }\n    ],\n    \"Tags\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29df071f-57ca-46c1-83a5-4adcc78efb5f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0b56a26-31e6-42a0-83e7-010ac08840fc",
+          "name": "Cyclr Get Template",
+          "request": {
+            "name": "Cyclr Get Template",
+            "description": {
+              "content": "Retrieve details of a specific integration template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":templateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) The unique identifier of the template"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68be20d4-43c2-4cf9-846f-f0ec1b8d629a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Description\": \"string\",\n  \"Connectors\": [\n    {\n      \"Id\": 2234,\n      \"Name\": \"string\"\n    },\n    {\n      \"Id\": 2086,\n      \"Name\": \"string\"\n    }\n  ],\n  \"Tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cbc9149-55fb-4b77-9691-77f38141c63d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a41a2ea-fa64-4e75-b4d2-13c6b33fddb5",
+              "name": "Template not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "078e20c2-91cf-4367-9a4a-8d8857034ec4",
+          "name": "Cyclr Install Template",
+          "request": {
+            "name": "Cyclr Install Template",
+            "description": {
+              "content": "Install an integration template into the current account. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":templateId",
+                "install"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) The unique identifier of the template"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d199ab66-d8a3-43a9-966c-3d06473c3b23",
+              "name": "Template installed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId",
+                    "install"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Description\": \"string\",\n  \"Status\": \"Error\",\n  \"CreatedDate\": \"1978-01-27T04:11:37.652Z\",\n  \"LastRunDate\": \"2002-04-03T07:59:05.085Z\",\n  \"Connectors\": [\n    {\n      \"Id\": 4488,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 6553,\n      \"Authenticated\": false,\n      \"Status\": \"string\"\n    },\n    {\n      \"Id\": 164,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 733,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    }\n  ],\n  \"Steps\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 5342,\n      \"MethodId\": \"string\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 9620,\n      \"MethodId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e14ffb43-dfe2-467b-8044-4adede346991",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId",
+                    "install"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96cb5fe7-8e28-4788-a6e1-ff06ec7b428a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId",
+                    "install"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff57ee2e-4215-4500-bb5a-0a89271f7707",
+              "name": "Template not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":templateId",
+                    "install"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) The unique identifier of the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cyclr.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8b88758e-416b-4ba8-b59b-e456b7ecc67d",
+    "name": "Cyclr Accounts Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cyclr's REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.\n\nContact Support:\n Name: Cyclr",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "25735c4c-3690-493f-bd66-eef0bdb6810a",
+      "name": "LAUNCH",
+      "description": {
+        "content": "Deploy LAUNCH integration UI for end users",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6104521d-4f6e-49a1-b38e-6c1d6cdcaa50",
+          "name": "Cyclr Deploy LAUNCH",
+          "request": {
+            "name": "Cyclr Deploy LAUNCH",
+            "description": {
+              "content": "Deploy the LAUNCH integration UI for a specific user, providing them with an interactive interface to set up integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "launch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Username\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\",\n  \"ConnectorAuthentications\": [\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a7a5bc1-1845-45fb-9958-40b4e82d32ff",
+              "name": "LAUNCH deployed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "launch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Username\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\",\n  \"ConnectorAuthentications\": [\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AccountId\": \"string\",\n  \"ExpiresAtUtc\": \"1994-05-19T10:47:56.042Z\",\n  \"LaunchUrl\": \"https://dENNZSeozIxaxmv.eyogSw3WOmiSh3vogAMG3MLvLV.PmTfMhxP6IDp\",\n  \"Token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e8672d8-c169-4067-9b1d-a89074db3936",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "launch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Username\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\",\n  \"ConnectorAuthentications\": [\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ca78d12-f9cf-4a01-bb68-9cd1e594baf0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "launch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Username\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\",\n  \"ConnectorAuthentications\": [\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Version\": \"<string>\",\n      \"AuthValue\": \"<string>\",\n      \"Properties\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cyclr.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "97600165-6d09-4471-8cef-104824081993",
+    "name": "Cyclr Accounts LAUNCH API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cyclr's REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.\n\nContact Support:\n Name: Cyclr",
+      "type": "text/plain"
+    }
+  }
+}

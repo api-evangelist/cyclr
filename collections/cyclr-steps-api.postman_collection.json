@@ -1,0 +1,979 @@
+{
+  "item": [
+    {
+      "id": "397c72a8-faec-4ee9-98b6-7728539769cc",
+      "name": "Steps",
+      "description": {
+        "content": "Manage cycle steps, parameters, and field mappings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b757387-5605-4e95-b1db-e96a1eeef19e",
+          "name": "Cyclr Get Step Parameters",
+          "request": {
+            "name": "Cyclr Get Step Parameters",
+            "description": {
+              "content": "Get the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "steps",
+                ":stepId",
+                "parameters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stepId",
+                  "description": "(Required) The unique identifier of the step"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "184646a8-3b57-46e1-a1ef-afa078a746dc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ecff598-67dc-4282-8eca-e6dc0eada981",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ccdc8e1-888c-4ff5-931b-599aa3859f76",
+              "name": "Step not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec1a0979-ae1a-4b53-9cfd-1290d9b8c858",
+          "name": "Cyclr Update Step Parameters",
+          "request": {
+            "name": "Cyclr Update Step Parameters",
+            "description": {
+              "content": "Update the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "steps",
+                ":stepId",
+                "parameters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stepId",
+                  "description": "(Required) The unique identifier of the step"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"TargetFieldName\": \"<string>\",\n    \"Value\": \"<string>\",\n    \"TriggerValue\": \"<string>\"\n  },\n  {\n    \"TargetFieldName\": \"<string>\",\n    \"Value\": \"<string>\",\n    \"TriggerValue\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c0a6fc6-971c-40cc-877c-d944d339a3f1",
+              "name": "Parameters updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7bc64cc5-8d5b-495a-8c0e-015f49bd30fc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57c2efc2-dba6-407e-9c51-8e316f34de09",
+              "name": "Step not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0aa1eba9-177f-4c2f-9b30-98f699d77524",
+          "name": "Cyclr Get Step Field Mappings",
+          "request": {
+            "name": "Cyclr Get Step Field Mappings",
+            "description": {
+              "content": "Get the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "steps",
+                ":stepId",
+                "fieldmappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stepId",
+                  "description": "(Required) The unique identifier of the step"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c1d96f1-7ae3-4640-b0ea-1ce35b90c6c4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "fieldmappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15124e6f-aea8-419a-8615-d7c2b7726c98",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "fieldmappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d21194bf-08cf-49c0-a6dc-9d3f88be2e0b",
+              "name": "Step not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "fieldmappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a79d8077-b133-4589-ac6d-53ac2724d13c",
+          "name": "Cyclr Update Step Field Mappings",
+          "request": {
+            "name": "Cyclr Update Step Field Mappings",
+            "description": {
+              "content": "Update the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "steps",
+                ":stepId",
+                "fieldmappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stepId",
+                  "description": "(Required) The unique identifier of the step"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"SourceFieldName\": \"<string>\",\n    \"TargetFieldName\": \"<string>\",\n    \"Value\": \"<string>\",\n    \"TriggerValue\": \"<string>\"\n  },\n  {\n    \"SourceFieldName\": \"<string>\",\n    \"TargetFieldName\": \"<string>\",\n    \"Value\": \"<string>\",\n    \"TriggerValue\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d09e4c0-f71a-4630-bc21-c0777ca51824",
+              "name": "Field mappings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "fieldmappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8fd7e147-57b8-4c28-9e11-3397aa705a55",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "fieldmappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "826a9c3b-9b6a-4f04-9b51-a9b2b053d539",
+              "name": "Step not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "steps",
+                    ":stepId",
+                    "fieldmappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stepId",
+                      "description": "(Required) The unique identifier of the step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  },\n  {\n    \"SourceFieldName\": \"string\",\n    \"TargetFieldName\": \"string\",\n    \"Value\": \"string\",\n    \"TriggerValue\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cyclr.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3de03ede-39f9-43fb-b187-98f53b7f82ec",
+    "name": "Cyclr Accounts Steps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cyclr's REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.\n\nContact Support:\n Name: Cyclr",
+      "type": "text/plain"
+    }
+  }
+}

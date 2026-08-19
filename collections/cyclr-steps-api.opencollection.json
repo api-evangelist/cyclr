@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts Steps API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Steps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Get Step Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/parameters",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ]
+          },
+          "docs": "Get the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Update Step Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/parameters",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the parameters for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Step Field Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/fieldmappings",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ]
+          },
+          "docs": "Get the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Update Step Field Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/steps/:stepId/fieldmappings",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the step"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the field mappings for a specific step in a cycle. Requires the X-Cyclr-Account header."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

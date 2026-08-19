@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts Cycles API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cycles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Cycles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/cycles",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all cycles in the current account. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Delete Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Delete a specific cycle. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Activate Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId/activate",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Activate a cycle so it begins running. Requires the X-Cyclr-Account header."
+        },
+        {
+          "info": {
+            "name": "Cyclr Deactivate Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/cycles/:cycleId/deactivate",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cycleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cycle"
+              }
+            ]
+          },
+          "docs": "Deactivate a running cycle. Requires the X-Cyclr-Account header."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

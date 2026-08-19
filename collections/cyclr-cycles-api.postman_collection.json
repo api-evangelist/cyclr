@@ -1,0 +1,1071 @@
+{
+  "item": [
+    {
+      "id": "89850954-177d-4a07-a536-188d1c2c14be",
+      "name": "Cycles",
+      "description": {
+        "content": "Manage integration cycles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "358345b1-92be-43bd-a506-773fb4a200c0",
+          "name": "Cyclr List Cycles",
+          "request": {
+            "name": "Cyclr List Cycles",
+            "description": {
+              "content": "Retrieve a list of all cycles in the current account. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cycles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3100d08c-0b94-47d4-94e0-460a093b9828",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"Status\": \"Error\",\n    \"CreatedDate\": \"2007-03-04T00:52:45.437Z\",\n    \"LastRunDate\": \"1957-06-19T19:51:17.925Z\",\n    \"Connectors\": [\n      {\n        \"Id\": 4942,\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 3468,\n        \"Authenticated\": false,\n        \"Status\": \"string\"\n      },\n      {\n        \"Id\": 6862,\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 5405,\n        \"Authenticated\": true,\n        \"Status\": \"string\"\n      }\n    ],\n    \"Steps\": [\n      {\n        \"Id\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 8352,\n        \"MethodId\": \"string\"\n      },\n      {\n        \"Id\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 4677,\n        \"MethodId\": \"string\"\n      }\n    ]\n  },\n  {\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"Status\": \"Error\",\n    \"CreatedDate\": \"1980-06-29T00:06:20.950Z\",\n    \"LastRunDate\": \"2025-01-01T13:12:24.490Z\",\n    \"Connectors\": [\n      {\n        \"Id\": 1954,\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 7565,\n        \"Authenticated\": true,\n        \"Status\": \"string\"\n      },\n      {\n        \"Id\": 1579,\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 149,\n        \"Authenticated\": false,\n        \"Status\": \"string\"\n      }\n    ],\n    \"Steps\": [\n      {\n        \"Id\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 5953,\n        \"MethodId\": \"string\"\n      },\n      {\n        \"Id\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"ConnectorId\": 1075,\n        \"MethodId\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49ce7e70-b778-479e-8dd5-9418c6b98cd0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f75885c-6cae-4d44-b348-66e5b4b52416",
+          "name": "Cyclr Get Cycle",
+          "request": {
+            "name": "Cyclr Get Cycle",
+            "description": {
+              "content": "Retrieve details of a specific cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cycles",
+                ":cycleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cycleId",
+                  "description": "(Required) The unique identifier of the cycle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9d833cf-8316-4c13-8429-974a6ae32335",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Description\": \"string\",\n  \"Status\": \"Error\",\n  \"CreatedDate\": \"1984-11-01T21:20:25.104Z\",\n  \"LastRunDate\": \"2025-05-20T05:49:22.631Z\",\n  \"Connectors\": [\n    {\n      \"Id\": 1895,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4925,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    },\n    {\n      \"Id\": 203,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4166,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    }\n  ],\n  \"Steps\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 8850,\n      \"MethodId\": \"string\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4554,\n      \"MethodId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cdb3522-4397-490b-a5e2-5639bdd47cc2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efb436a3-eda5-42ba-9a4d-64687be3d63a",
+              "name": "Cycle not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a74a61e-f63d-4229-a5f1-ad3b0d24b8aa",
+          "name": "Cyclr Delete Cycle",
+          "request": {
+            "name": "Cyclr Delete Cycle",
+            "description": {
+              "content": "Delete a specific cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cycles",
+                ":cycleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cycleId",
+                  "description": "(Required) The unique identifier of the cycle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7105b021-1816-402f-82bd-9c92833d5884",
+              "name": "Cycle deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df4e5bf4-13c6-49f0-8ffc-d577584a5105",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63a8c548-345d-462c-8671-bcadf0f40c37",
+              "name": "Cycle not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cac5cac1-1ff1-47a2-bc38-08a92abe7fff",
+          "name": "Cyclr Activate Cycle",
+          "request": {
+            "name": "Cyclr Activate Cycle",
+            "description": {
+              "content": "Activate a cycle so it begins running. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cycles",
+                ":cycleId",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cycleId",
+                  "description": "(Required) The unique identifier of the cycle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b484226-fd77-4f9c-a204-34c069e78cb9",
+              "name": "Cycle activated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Description\": \"string\",\n  \"Status\": \"Error\",\n  \"CreatedDate\": \"1984-11-01T21:20:25.104Z\",\n  \"LastRunDate\": \"2025-05-20T05:49:22.631Z\",\n  \"Connectors\": [\n    {\n      \"Id\": 1895,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4925,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    },\n    {\n      \"Id\": 203,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4166,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    }\n  ],\n  \"Steps\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 8850,\n      \"MethodId\": \"string\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4554,\n      \"MethodId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7652ac12-a60f-4b8a-832d-49309b1fe937",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a160877b-5d9c-416f-bdf2-d8ac9f15b7e9",
+              "name": "Cycle not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85fa3dbe-e3cc-4939-8090-1320741fe12b",
+          "name": "Cyclr Deactivate Cycle",
+          "request": {
+            "name": "Cyclr Deactivate Cycle",
+            "description": {
+              "content": "Deactivate a running cycle. Requires the X-Cyclr-Account header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cycles",
+                ":cycleId",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cycleId",
+                  "description": "(Required) The unique identifier of the cycle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a98656d6-5574-4cf5-9d49-0cf856c927d5",
+              "name": "Cycle deactivated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Description\": \"string\",\n  \"Status\": \"Error\",\n  \"CreatedDate\": \"1984-11-01T21:20:25.104Z\",\n  \"LastRunDate\": \"2025-05-20T05:49:22.631Z\",\n  \"Connectors\": [\n    {\n      \"Id\": 1895,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4925,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    },\n    {\n      \"Id\": 203,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4166,\n      \"Authenticated\": true,\n      \"Status\": \"string\"\n    }\n  ],\n  \"Steps\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 8850,\n      \"MethodId\": \"string\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ConnectorId\": 4554,\n      \"MethodId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03fd367f-5cf8-4c83-8934-1ca6f773c115",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a829791-acf0-40d7-a277-712fc18ff7ba",
+              "name": "Cycle not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cycles",
+                    ":cycleId",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cycleId",
+                      "description": "(Required) The unique identifier of the cycle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cyclr.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "28167645-801b-4a55-81cf-faf085d31133",
+    "name": "Cyclr Accounts Cycles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cyclr's REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.\n\nContact Support:\n Name: Cyclr",
+      "type": "text/plain"
+    }
+  }
+}

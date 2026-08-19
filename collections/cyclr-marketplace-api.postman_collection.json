@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "09df0286-a869-4f7b-a6c7-090eca198fa3",
+      "name": "Marketplace",
+      "description": {
+        "content": "Deploy Marketplace integration UI for end users",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5cdcc8d1-c6dc-4077-ab30-2e9dd7ca05fb",
+          "name": "Cyclr Deploy Marketplace",
+          "request": {
+            "name": "Cyclr Deploy Marketplace",
+            "description": {
+              "content": "Deploy the Marketplace integration UI for a specific user, providing them with an interface to browse and install available integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "marketplace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                "key": "X-Cyclr-Account",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Username\": \"<string>\",\n  \"MarketplaceId\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d79a56c-1d1c-431b-a841-10568ec49f3c",
+              "name": "Marketplace deployed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "marketplace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Username\": \"<string>\",\n  \"MarketplaceId\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AccountId\": \"string\",\n  \"ExpiresAtUtc\": \"2003-07-22T10:27:47.386Z\",\n  \"MarketplaceUrl\": \"http://ZKcXDw.puap0ui-japUUOGLCTVMvubdsc+KQPj1w3CtN9uBXA0c82vnT\",\n  \"Token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66100b4a-3c35-400b-b98d-8b5ae7f98674",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "marketplace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Username\": \"<string>\",\n  \"MarketplaceId\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dc1794e-49e1-40b8-8ce4-594ca5819c8e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "marketplace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.",
+                    "key": "X-Cyclr-Account",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Username\": \"<string>\",\n  \"MarketplaceId\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"AccountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cyclr.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dfa28287-eb58-4ac0-a33f-808a67a4b570",
+    "name": "Cyclr Accounts Marketplace API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cyclr's REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.\n\nContact Support:\n Name: Cyclr",
+      "type": "text/plain"
+    }
+  }
+}

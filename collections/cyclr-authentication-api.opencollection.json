@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts Authentication API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Get Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain an OAuth 2.0 access token using Client Credentials flow. Provide your Cyclr Console Client ID and Client Secret to receive a Bearer token for use with all other API endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

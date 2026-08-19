@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts Data on Demand API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data on Demand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Data On Demand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/data",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a data request through an installed connector, allowing you to make API-driven data requests without working with cycles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

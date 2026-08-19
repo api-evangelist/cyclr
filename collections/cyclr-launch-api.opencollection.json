@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts LAUNCH API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LAUNCH",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr Deploy LAUNCH",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/users/launch",
+            "headers": [
+              {
+                "name": "X-Cyclr-Account",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy the LAUNCH integration UI for a specific user, providing them with an interactive interface to set up integrations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

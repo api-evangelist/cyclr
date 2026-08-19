@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cyclr Accounts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cyclr List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/accounts",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all Cyclr accounts under the partner."
+        },
+        {
+          "info": {
+            "name": "Cyclr Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Cyclr account under the partner."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific Cyclr account."
+        },
+        {
+          "info": {
+            "name": "Cyclr Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Cyclr account."
+        },
+        {
+          "info": {
+            "name": "Cyclr Delete Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ]
+          },
+          "docs": "Delete a specific Cyclr account."
+        },
+        {
+          "info": {
+            "name": "Cyclr Get Account Sign-In Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cyclr.com/v1.0/accounts/:accountId/signintoken",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Cyclr account"
+              }
+            ]
+          },
+          "docs": "Generate a sign-in token for a specific account, allowing access to the Cyclr console for that account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
