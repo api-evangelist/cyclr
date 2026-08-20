@@ -38,6 +38,23 @@ tags:
   - Embedded SaaS Integration
   - Embedded UI
   - Integration Platform
+  - Integration
+  - Marketplace
+  - Authentication
+  - REST API
+  - Software-as-a-Service
+  - Templates
+  - Webhook
+  - White Label
+  - Workflows
+tags_raw:
+  - Connectors
+  - Custom Connectors
+  - Data Synchronization
+  - Embedded iPaaS
+  - Embedded SaaS Integration
+  - Embedded UI
+  - Integration Platform
   - Integrations
   - Marketplace
   - OAuth 2.0
@@ -54,6 +71,8 @@ apis:
   humanURL: https://cyclr.com
   baseURL: https://api.cyclr.com/v1.0
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -224,6 +243,8 @@ apis:
   humanURL: https://cyclr.com
   baseURL: https://api.cyclr.com/v1.0
   tags:
+  - Launch
+  tags_raw:
   - LAUNCH
   properties:
   - type: OpenAPI
