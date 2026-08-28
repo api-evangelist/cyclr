@@ -10,6 +10,18 @@ description: >-
   siblings) protected by OAuth 2.0 client credentials. Account-scoped calls require an X-Cyclr-Account header to
   identify the target Cyclr account.
 url: https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
