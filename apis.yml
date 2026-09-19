@@ -256,7 +256,7 @@ apis:
   humanURL: https://cyclr.com
   baseURL: https://api.cyclr.com/v1.0
   tags:
-  - Launch
+  - Launches
   tags_raw:
   - LAUNCH
   properties:
