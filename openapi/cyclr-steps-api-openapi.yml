@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Cyclr Accounts Steps API
+  title: Cyclr Steps API
   description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
   version: 1.0.0
   contact:
@@ -118,13 +118,6 @@ paths:
           description: Step not found
 components:
   parameters:
-    xCyclrAccount:
-      name: X-Cyclr-Account
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
     stepId:
       name: stepId
       in: path
@@ -132,7 +125,26 @@ components:
       schema:
         type: string
       description: The unique identifier of the step
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
   schemas:
+    StepParameter:
+      type: object
+      properties:
+        TargetFieldName:
+          type: string
+          description: Name of the target parameter field
+        Value:
+          type: string
+          description: Value of the parameter
+        TriggerValue:
+          type: string
+          description: Trigger value for the parameter
     FieldMapping:
       type: object
       properties:
@@ -148,18 +160,6 @@ components:
         TriggerValue:
           type: string
           description: Trigger value for the mapping
-    StepParameter:
-      type: object
-      properties:
-        TargetFieldName:
-          type: string
-          description: Name of the target parameter field
-        Value:
-          type: string
-          description: Value of the parameter
-        TriggerValue:
-          type: string
-          description: Trigger value for the parameter
   securitySchemes:
     bearerAuth:
       type: http

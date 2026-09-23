@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Cyclr Accounts API
   description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
@@ -163,28 +163,15 @@ paths:
         '404':
           description: Account not found
 components:
+  parameters:
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the Cyclr account
   schemas:
-    InstalledConnector:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Installed connector identifier
-        Name:
-          type: string
-          description: Installed connector name
-        Description:
-          type: string
-          description: Installed connector description
-        ConnectorId:
-          type: integer
-          description: Reference to the base connector
-        Authenticated:
-          type: boolean
-          description: Whether the connector has been authenticated
-        Status:
-          type: string
-          description: Installation status
     AccountCreate:
       type: object
       required:
@@ -223,14 +210,27 @@ components:
           description: Connectors installed in the account
           items:
             $ref: '#/components/schemas/InstalledConnector'
-  parameters:
-    accountId:
-      name: accountId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the Cyclr account
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
   securitySchemes:
     bearerAuth:
       type: http

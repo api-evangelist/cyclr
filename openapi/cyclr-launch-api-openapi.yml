@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Cyclr Accounts LAUNCH API
+  title: Cyclr LAUNCH API
   description: 'Cyclr''s REST API allows you to manage your Accounts and Cycles, as well as install Templates and Connectors. The API is divided into two parts: Partner Level and Account Level. You can use the same OAuth Access Token for both, but Account level endpoints require an additional X-Cyclr-Account HTTP header to identify which Cyclr Account to execute the call against.'
   version: 1.0.0
   contact:
@@ -19,7 +19,7 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: LAUNCH
+- name: Launch
   description: Deploy LAUNCH integration UI for end users
 paths:
   /users/launch:
@@ -28,7 +28,7 @@ paths:
       summary: Cyclr Deploy LAUNCH
       description: Deploy the LAUNCH integration UI for a specific user, providing them with an interactive interface to set up integrations.
       tags:
-      - LAUNCH
+      - Launch
       parameters:
       - $ref: '#/components/parameters/xCyclrAccount'
       requestBody:
