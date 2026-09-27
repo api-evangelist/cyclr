@@ -107,21 +107,6 @@ paths:
         '404':
           description: Template not found
 components:
-  parameters:
-    templateId:
-      name: templateId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the template
-    xCyclrAccount:
-      name: X-Cyclr-Account
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
   schemas:
     Cycle:
       type: object
@@ -227,6 +212,21 @@ components:
         MethodId:
           type: string
           description: ID of the method called by this step
+  parameters:
+    templateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the template
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
   securitySchemes:
     bearerAuth:
       type: http

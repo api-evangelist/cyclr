@@ -163,14 +163,6 @@ paths:
         '404':
           description: Account not found
 components:
-  parameters:
-    accountId:
-      name: accountId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the Cyclr account
   schemas:
     AccountCreate:
       type: object
@@ -231,6 +223,14 @@ components:
         Status:
           type: string
           description: Installation status
+  parameters:
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the Cyclr account
   securitySchemes:
     bearerAuth:
       type: http
