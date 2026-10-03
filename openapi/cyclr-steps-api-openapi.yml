@@ -118,18 +118,6 @@ paths:
           description: Step not found
 components:
   schemas:
-    StepParameter:
-      type: object
-      properties:
-        TargetFieldName:
-          type: string
-          description: Name of the target parameter field
-        Value:
-          type: string
-          description: Value of the parameter
-        TriggerValue:
-          type: string
-          description: Trigger value for the parameter
     FieldMapping:
       type: object
       properties:
@@ -145,6 +133,18 @@ components:
         TriggerValue:
           type: string
           description: Trigger value for the mapping
+    StepParameter:
+      type: object
+      properties:
+        TargetFieldName:
+          type: string
+          description: Name of the target parameter field
+        Value:
+          type: string
+          description: Value of the parameter
+        TriggerValue:
+          type: string
+          description: Trigger value for the parameter
   parameters:
     stepId:
       name: stepId

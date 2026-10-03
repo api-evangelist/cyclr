@@ -181,13 +181,6 @@ paths:
           description: Installed connector not found
 components:
   parameters:
-    connectorId:
-      name: connectorId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the connector
     xCyclrAccount:
       name: X-Cyclr-Account
       in: header
@@ -195,6 +188,13 @@ components:
       schema:
         type: string
       description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+    connectorId:
+      name: connectorId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the connector
   schemas:
     InstalledConnector:
       type: object

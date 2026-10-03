@@ -164,20 +164,6 @@ paths:
           description: Account not found
 components:
   schemas:
-    AccountCreate:
-      type: object
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-          description: Account name
-        Description:
-          type: string
-          description: Account description
-        ApiId:
-          type: string
-          description: External API identifier for the account
     Account:
       type: object
       properties:
@@ -223,6 +209,20 @@ components:
         Status:
           type: string
           description: Installation status
+    AccountCreate:
+      type: object
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+          description: Account name
+        Description:
+          type: string
+          description: Account description
+        ApiId:
+          type: string
+          description: External API identifier for the account
   parameters:
     accountId:
       name: accountId

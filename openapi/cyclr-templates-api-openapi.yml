@@ -146,27 +146,6 @@ components:
           description: Steps in the cycle
           items:
             $ref: '#/components/schemas/Step'
-    InstalledConnector:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Installed connector identifier
-        Name:
-          type: string
-          description: Installed connector name
-        Description:
-          type: string
-          description: Installed connector description
-        ConnectorId:
-          type: integer
-          description: Reference to the base connector
-        Authenticated:
-          type: boolean
-          description: Whether the connector has been authenticated
-        Status:
-          type: string
-          description: Installation status
     Template:
       type: object
       properties:
@@ -194,6 +173,27 @@ components:
           description: Tags associated with the template
           items:
             type: string
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
     Step:
       type: object
       properties:
@@ -213,13 +213,6 @@ components:
           type: string
           description: ID of the method called by this step
   parameters:
-    templateId:
-      name: templateId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the template
     xCyclrAccount:
       name: X-Cyclr-Account
       in: header
@@ -227,6 +220,13 @@ components:
       schema:
         type: string
       description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+    templateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the template
   securitySchemes:
     bearerAuth:
       type: http
