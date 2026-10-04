@@ -196,27 +196,6 @@ components:
         type: string
       description: The unique identifier of the connector
   schemas:
-    InstalledConnector:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Installed connector identifier
-        Name:
-          type: string
-          description: Installed connector name
-        Description:
-          type: string
-          description: Installed connector description
-        ConnectorId:
-          type: integer
-          description: Reference to the base connector
-        Authenticated:
-          type: boolean
-          description: Whether the connector has been authenticated
-        Status:
-          type: string
-          description: Installation status
     Connector:
       type: object
       properties:
@@ -247,6 +226,27 @@ components:
           - ApiKey
           - Basic
           - None
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
   securitySchemes:
     bearerAuth:
       type: http

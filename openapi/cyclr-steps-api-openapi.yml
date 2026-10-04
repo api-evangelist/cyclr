@@ -117,6 +117,21 @@ paths:
         '404':
           description: Step not found
 components:
+  parameters:
+    xCyclrAccount:
+      name: X-Cyclr-Account
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
+    stepId:
+      name: stepId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the step
   schemas:
     FieldMapping:
       type: object
@@ -145,21 +160,6 @@ components:
         TriggerValue:
           type: string
           description: Trigger value for the parameter
-  parameters:
-    stepId:
-      name: stepId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the step
-    xCyclrAccount:
-      name: X-Cyclr-Account
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The API ID of the Cyclr Account to execute the call against. Required for all Account level endpoints.
   securitySchemes:
     bearerAuth:
       type: http
