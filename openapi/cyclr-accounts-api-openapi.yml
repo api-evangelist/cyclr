@@ -163,14 +163,6 @@ paths:
         '404':
           description: Account not found
 components:
-  parameters:
-    accountId:
-      name: accountId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the Cyclr account
   schemas:
     AccountCreate:
       type: object
@@ -186,6 +178,27 @@ components:
         ApiId:
           type: string
           description: External API identifier for the account
+    InstalledConnector:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Installed connector identifier
+        Name:
+          type: string
+          description: Installed connector name
+        Description:
+          type: string
+          description: Installed connector description
+        ConnectorId:
+          type: integer
+          description: Reference to the base connector
+        Authenticated:
+          type: boolean
+          description: Whether the connector has been authenticated
+        Status:
+          type: string
+          description: Installation status
     Account:
       type: object
       properties:
@@ -210,27 +223,14 @@ components:
           description: Connectors installed in the account
           items:
             $ref: '#/components/schemas/InstalledConnector'
-    InstalledConnector:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Installed connector identifier
-        Name:
-          type: string
-          description: Installed connector name
-        Description:
-          type: string
-          description: Installed connector description
-        ConnectorId:
-          type: integer
-          description: Reference to the base connector
-        Authenticated:
-          type: boolean
-          description: Whether the connector has been authenticated
-        Status:
-          type: string
-          description: Installation status
+  parameters:
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the Cyclr account
   securitySchemes:
     bearerAuth:
       type: http
