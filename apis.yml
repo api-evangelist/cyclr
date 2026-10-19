@@ -88,8 +88,6 @@ apis:
   tags_raw:
   - Accounts
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-accounts-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -122,8 +120,6 @@ apis:
   tags:
   - Authentication
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-authentication-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -156,8 +152,6 @@ apis:
   tags:
   - Connectors
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-connectors-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -190,8 +184,6 @@ apis:
   tags:
   - Cycles
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-cycles-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -224,8 +216,6 @@ apis:
   tags:
   - Data on Demand
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-data-on-demand-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -260,8 +250,6 @@ apis:
   tags_raw:
   - LAUNCH
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-launch-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -294,8 +282,6 @@ apis:
   tags:
   - Marketplace
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-marketplace-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -328,8 +314,6 @@ apis:
   tags:
   - Steps
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-steps-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation
@@ -362,8 +346,6 @@ apis:
   tags:
   - Templates
   properties:
-  - type: OpenAPI
-    url: openapi/cyclr-templates-api-openapi.yml
   - type: Documentation
     url: https://cyclr.com
   - type: APIDocumentation

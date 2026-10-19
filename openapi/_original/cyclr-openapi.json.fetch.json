@@ -1,0 +1,12 @@
+{
+ "url": "https://cyclr.com/wp-json/cyclr-agent/v1/openapi.json",
+ "final": "https://cyclr.com/wp-json/cyclr-agent/v1/openapi.json",
+ "status": 200,
+ "content_type": "application/vnd.oai.openapi+json; charset=utf-8",
+ "bytes": 3486,
+ "sha256": "1ec9b3c8eac34a90aed0ed8fc576180af5caa1c77c9f95936c505cff0a80f20d",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}
