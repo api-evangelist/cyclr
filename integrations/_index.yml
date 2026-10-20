@@ -15,3 +15,16 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: cyclr-chargebee-own
+  label: Chargebee (own)
+  partner: chargebee
+  partner_name: Chargebee (own)
+  category: Integration platform
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.chargebee.com/apps/['cyclr']
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

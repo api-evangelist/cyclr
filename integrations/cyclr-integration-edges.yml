@@ -1,7 +1,19 @@
-generated: '2026-10-13'
+generated: '2026-10-20'
 method: searched
+source:
+- chargebee/integrations/chargebee-integration-edges.yml
+- https://zapier.com/apps/cyclr/integrations
+- https://n8n.io/integrations/cyclr/
+- https://composio.dev/toolkits/cyclr
+- https://monid.ai/tools/cyclr
 checked:
+- chargebee/integrations/chargebee-integration-edges.yml
 - https://aws.amazon.com/marketplace/
+- https://composio.dev/toolkits/cyclr
+- https://monid.ai/tools/cyclr
+- https://n8n.io/integrations/cyclr/
+- https://zapier.com/apps/cyclr/integrations
+summary: null
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -19,3 +31,21 @@ edges:
   seller_name: Cyclr
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Chargebee (own)
+  partner: chargebee
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.chargebee.com/apps/['cyclr']
+  mirror_of: chargebee/integrations/chargebee-integration-edges.yml
+  apps:
+  - Cyclr
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: Integration platform
+templates: []
