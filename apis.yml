@@ -371,6 +371,8 @@ apis:
   - type: Rules
     url: rules/cyclr-api-rules.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/cyclr/overview
   - type: Plans
     url: plans/cyclr-plans-pricing.yml
   - type: RateLimits
