@@ -1,4 +1,4 @@
-# Cyclr (cyclr)
+# Cyclr
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,102 +66,189 @@
 
 Cyclr is an embedded iPaaS (integration platform as a service) used by SaaS vendors to deliver native integrations to their customers without each vendor building and maintaining one-off connectors. The platform provides a connector library covering hundreds of business applications (CRM, marketing, finance, support, ERP, e-commerce), drag-and-drop integration templates, embedded LAUNCH and Marketplace UIs, custom connector creation, fully managed authentication, and workflow orchestration. Cyclr exposes a public REST API at api.cyclr.com (with regional EU / AU / UK / US2 siblings) protected by OAuth 2.0 client credentials. Account-scoped calls require an X-Cyclr-Account header to identify the target Cyclr account.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cyclr/refs/heads/main/apis.yml)
+**Areas:** Connectors · Custom Connectors · Data Synchronization · Embedded iPaaS · Embedded SaaS Integration · Embedded UI · Integration Platform · Integration · Marketplace · Authentication · REST API · Software-as-a-Service
 
-## Scope
+## Cyclr on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Cyclr is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cyclr/](https://apis.io/providers/cyclr/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Connectors
-- Custom Connectors
-- Data Synchronization
-- Embedded iPaaS
-- Embedded SaaS Integration
-- Embedded UI
-- Integration Platform
-- Integrations
-- Marketplace
-- OAuth 2.0
-- REST API
-- SaaS
-- Templates
-- Webhooks
-- White Label
-- Workflows
+- [Cyclr Accounts API](https://apis.io/apis/cyclr/cyclr-accounts-api/) — Manage Cyclr accounts
+- [Cyclr Authentication API](https://apis.io/apis/cyclr/cyclr-authentication-api/) — Obtain access tokens for API authentication
+- [Cyclr Connectors API](https://apis.io/apis/cyclr/cyclr-connectors-api/) — Manage and install connectors
+- [Cyclr Cycles API](https://apis.io/apis/cyclr/cyclr-cycles-api/) — Manage integration cycles
+- [Cyclr Data on Demand API](https://apis.io/apis/cyclr/cyclr-data-on-demand-api/) — API-driven data requests (proxy)
+- [Cyclr LAUNCH API](https://apis.io/apis/cyclr/cyclr-launch-api/) — Deploy LAUNCH integration UI for end users
+- [Cyclr Marketplace API](https://apis.io/apis/cyclr/cyclr-marketplace-api/) — Deploy Marketplace integration UI for end users
+- [Cyclr Steps API](https://apis.io/apis/cyclr/cyclr-steps-api/) — Manage cycle steps, parameters, and field mappings
+- [Cyclr Templates API](https://apis.io/apis/cyclr/cyclr-templates-api/) — Manage and install integration templates
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-06-06
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Cyclr API
+Event-driven and webhook contracts.
 
-Cyclr's REST API allows partners to manage their accounts, install and authenticate connectors, install templates as cycles, build and configure cycle steps, and embed LAUNCH and Marketplace UIs into their host SaaS product. Authentication uses OAuth 2.0 client credentials issued in the Cyclr Console; account-scoped operations include the X-Cyclr-Account HTTP header.
+- [Cyclr Webhook Events](https://apis.io/asyncapis/cyclr/cyclr-cyclr-asyncapi/)
 
-- **Human URL:** [https://cyclr.com](https://cyclr.com)
-- **Base URL:** `https://api.cyclr.com/v1.0`
+#### Event channels (11)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Accounts
-- Connectors
-- Cycles
-- Embedded UI
-- OAuth 2.0
-- REST
-- Steps
-- Templates
+- [account.created](https://apis.io/channels/cyclr/account-created/)
+- [account.deleted](https://apis.io/channels/cyclr/account-deleted/)
+- [connector.authenticated](https://apis.io/channels/cyclr/connector-authenticated/)
+- [connector.installed](https://apis.io/channels/cyclr/connector-installed/)
+- [connector.uninstalled](https://apis.io/channels/cyclr/connector-uninstalled/)
+- [cycle.activated](https://apis.io/channels/cyclr/cycle-activated/)
+- [cycle.completed](https://apis.io/channels/cyclr/cycle-completed/)
+- [cycle.deactivated](https://apis.io/channels/cyclr/cycle-deactivated/)
+- [cycle.error](https://apis.io/channels/cyclr/cycle-error/)
+- [step.error](https://apis.io/channels/cyclr/step-error/)
+- [template.installed](https://apis.io/channels/cyclr/template-installed/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://cyclr.com)
-- [A P I Documentation](https://docs.cyclr.com/api/)
-- [API Reference](https://api.cyclr.com/docs/index)
-- [OpenAPI](openapi/cyclr-cyclr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cyclr-cyclr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cyclr-cyclr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/cyclr-cyclr-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](json-schema/cyclr-account.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cyclr-connector.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cyclr-installed-connector.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cyclr-template.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cyclr-cycle.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cyclr-step.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/cyclr-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Capabilities](capabilities/cyclr-api-capabilities.yml)
-- [Rules](rules/cyclr-api-rules.yml)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Cyclr Agentic Access](https://apis.io/agentic-access/cyclr/cyclr-agentic-access/)
 
-- [GitHub Organization](https://github.com/cyclr)
-- [LinkedIn](https://www.linkedin.com/company/cyclr-systems-ltd)
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [Cyclr Account](https://apis.io/schemas/cyclr/cyclr-account/)
+- [Cyclr Connector](https://apis.io/schemas/cyclr/cyclr-connector/)
+- [Cyclr Cycle](https://apis.io/schemas/cyclr/cyclr-cycle/)
+- [Cyclr Installed Connector](https://apis.io/schemas/cyclr/cyclr-installed-connector/)
+- [Cyclr Step](https://apis.io/schemas/cyclr/cyclr-step/)
+- [Cyclr Template](https://apis.io/schemas/cyclr/cyclr-template/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Cyclr Context](https://apis.io/jsonld/cyclr/cyclr-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Cyclr Vocabulary](https://apis.io/vocabularies/cyclr/cyclr-vocabulary/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [Cyclr Accounts API](https://apis.io/collections/cyclr/open-cyclr-accounts-api/)
+- [Cyclr Accounts Authentication API](https://apis.io/collections/cyclr/open-cyclr-authentication-api/)
+- [Cyclr Accounts Connectors API](https://apis.io/collections/cyclr/open-cyclr-connectors-api/)
+- [Cyclr Accounts Cycles API](https://apis.io/collections/cyclr/open-cyclr-cycles-api/)
+- [Cyclr API](https://apis.io/collections/cyclr/open-cyclr-cyclr/)
+- [Cyclr Accounts Data on Demand API](https://apis.io/collections/cyclr/open-cyclr-data-on-demand-api/)
+- [Cyclr Accounts LAUNCH API](https://apis.io/collections/cyclr/open-cyclr-launch-api/)
+- [Cyclr Accounts Marketplace API](https://apis.io/collections/cyclr/open-cyclr-marketplace-api/)
+- [Cyclr Accounts Steps API](https://apis.io/collections/cyclr/open-cyclr-steps-api/)
+- [Cyclr Accounts Templates API](https://apis.io/collections/cyclr/open-cyclr-templates-api/)
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [Cyclr — api rules](https://apis.io/rules/cyclr/cyclr-api-rules/)
+- [Cyclr — asyncapi rules](https://apis.io/rules/cyclr/cyclr-asyncapi-spectral-rules/)
+- [Cyclr — jsonschema rules](https://apis.io/rules/cyclr/cyclr-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cyclr Authentication](https://apis.io/security/cyclr/cyclr-authentication/)
+- [Cyclr Domain Security](https://apis.io/security/cyclr/cyclr-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Cyclr Plans Pricing](https://apis.io/plans/cyclr/cyclr-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cyclr Rate Limits](https://apis.io/rate-limits/cyclr/cyclr-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Cyclr Finops](https://apis.io/finops/cyclr/cyclr-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://cyclr.com/)
-- [Connectors](https://cyclr.com/connectors)
 - [Pricing](https://cyclr.com/product/pricing)
-- [Case Studies](https://cyclr.com/case-studies)
-- [Webinars](https://cyclr.com/resources/webinars)
-- [Blog](https://cyclr.com/blog)
-- [Branding](https://cyclr.com/brand)
-- [Partners](https://cyclr.com/become-a-partner)
-- [Security](https://cyclr.com/security-and-compliance)
-- [G D P R](https://cyclr.com/legal/gdpr-compliance)
-- [S L A](https://cyclr.com/sla)
 - [Changelog](https://community.cyclr.com/user-documentation/release-notes/introduction-to-release-notes)
-- [Login](https://my.cyclr.com/account/login)
-- [Get Started](https://cyclr.com/get-started)
-- [Vocabulary](vocabulary/cyclr-vocabulary.yml)
-- [Capabilities](capabilities/cyclr-api-capabilities.yml)
-- [Rules](rules/cyclr-api-rules.yml)
-- [Integrations](https://cyclr.com/connectors)
-- [L L Ms Txt](https://cyclr.com/llms.txt)
+- [Blog](https://cyclr.com/blog)
+- [Security](https://cyclr.com/security-and-compliance)
+- [GitHub](https://github.com/cyclr)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 42.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 63.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 35.2 |
+| Access clarity | 25.0 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cyclr/](https://apis.io/providers/cyclr/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cyclr: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cyclr/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
